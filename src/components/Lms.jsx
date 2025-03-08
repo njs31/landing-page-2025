@@ -47,12 +47,12 @@ const LMSFeaturesGrid = () => {
   const getCardsGap = () => (isMobile ? 8 : 16);
 
   const featureData = [
-    { title: 'Institute management', iconColor: '#E3F2FD', textColor: '#64B5F6', description: 'Automate enrollment, attendance, fees, exams, analysis. Optimize institute performance and resource use', icon: <VideocamOutlinedIcon fontSize="large" style={{ color: '#64b5f6' }} /> },
-    { title: 'Data management', iconColor: '#FCE4EC', textColor: '#EC407A', description: 'Easily record, backup, export data in CSV or XML format. Customize fields, manage student details, and save records for in-depth analysis', icon: <AnalyticsOutlinedIcon fontSize="large" style={{ color: '#ec407a' }} /> },
-    { title: 'Finance management', iconColor: '#F1F8E9', textColor: '#AED581', description: 'Simplifies fees collection, Automate Transactions and Provide In-depth Financial Reports', icon: <TouchAppOutlinedIcon fontSize="large" style={{ color: '#aed581' }} /> },
-    { title: 'Admission management', iconColor: '#FFF3E0', textColor: '#FFB74D', description: 'Digital admission process, Easy form submission, Seamless admission tracking', icon: <AssignmentOutlinedIcon fontSize="large" style={{ color: '#ffb74d' }} /> },
-    { title: 'Transport management', iconColor: '#F3E5F5', textColor: '#BA68C8', description: 'Enhance student safety, Tracking vehicle status and Collect transportation fees', icon: <QuizOutlinedIcon fontSize="large" style={{ color: '#ba68c8' }} /> },
-    { title: 'Inventory management', iconColor: '#F3E5F5', textColor: '#BA68C8', description: 'Manage Inventory, Maintain Supplier details and Generate a paperless invoice', icon: <QuizOutlinedIcon fontSize="large" style={{ color: '#ba68c8' }} /> }
+    { title: 'Secure Virtual Classes', iconColor: '#E3F2FD', textColor: '#64B5F6', description: 'Our solutions empower you to conduct online classes with ironclad security. You have full control over class access and participants', icon: <VideocamOutlinedIcon fontSize="large" style={{ color: '#64b5f6' }} /> },
+    { title: 'Quick Analysis', iconColor: '#FCE4EC', textColor: '#EC407A', description: 'We provides 14 types of analysis that teachers and students can dive into for insights that spark improvement', icon: <AnalyticsOutlinedIcon fontSize="large" style={{ color: '#ec407a' }} /> },
+    { title: 'Multiple Question Papers', iconColor: '#F1F8E9', textColor: '#AED581', description: 'Leverage our library to effortlessly create & customize multiple question papers tailored to your exact needs', icon: <TouchAppOutlinedIcon fontSize="large" style={{ color: '#aed581' }} /> },
+    { title: 'User friendly interface', iconColor: '#FFF3E0', textColor: '#FFB74D', description: 'Designed for both students and institutes, our easy-to-navigate interface ensures a seamless and straightforward learning experience.', icon: <AssignmentOutlinedIcon fontSize="large" style={{ color: '#ffb74d' }} /> },
+    { title: 'Test Creation', iconColor: '#F3E5F5', textColor: '#BA68C8', description: 'Our test creation tool lets students craft personalized papers aligned with their performance, fostering progress and improvement', icon: <QuizOutlinedIcon fontSize="large" style={{ color: '#ba68c8' }} /> },
+    
   ];
 
   const maxScrollWidth = () => {
@@ -203,10 +203,10 @@ const LMSFeaturesGrid = () => {
         <Container maxWidth="lg" sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
           <Box sx={{ mb: 5, textAlign: 'left' }}>
             <Typography variant="h3" fontWeight="500" sx={{ fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' } }}>
-            Optimize Operations with <Box component="span" sx={{ color: '#4FC3F7' }}>Onesaz</Box> ERP
+            Increased results <Box component="span" sx={{ color: '#4FC3F7' }}>with</Box>   LMS features
             </Typography>
             <Typography variant="subtitle1" sx={{ opacity: 0.7, mb: 3, fontSize: { xs: '1rem', sm: '1.1rem', md: '1.2rem' } }}>
-            With Onesaz ERP, you're embracing a new era of education management
+            Run your school on most intelligent operating system
             </Typography>
 
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mt: 2 }}>
@@ -224,7 +224,7 @@ const LMSFeaturesGrid = () => {
                   fontSize: { xs: '0.9rem', sm: '1rem' }
                 }}
               >
-                12+ ERP features
+                Empower Management Efficiency
               </Button>
               <Button 
                 variant="outlined" 
@@ -240,7 +240,7 @@ const LMSFeaturesGrid = () => {
                   fontSize: { xs: '0.9rem', sm: '1rem' }
                 }}
               >
-                Fully customizable
+                Enhance the Students Learning
               </Button>
             </Box>
           </Box>
