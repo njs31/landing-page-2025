@@ -87,14 +87,22 @@ const TestimonialsSection = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <Box sx={{ mt: 4, py: 4, height: isMobile ? 'auto' : '100vh' }}>
-      <Typography variant="h4" align="center" gutterBottom>
+    <Box sx={{ mt: 4, py: 4, px: { xs: 2, md: 4 }, height: isMobile ? 'auto' : '100vh' }}>
+      <Typography 
+        variant="h4" 
+        align="center" 
+        gutterBottom 
+        sx={{ 
+          fontWeight: 700, 
+          fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' } 
+        }}
+      >
         What our customers were saying
       </Typography>
       <Typography variant="subtitle1" align="center" color="textSecondary" paragraph>
         Vital KPI's, Real-time updates, Customisable dashlets
       </Typography>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} sx={{ mt: 2 }}>
         {testimonials.map((testimonial, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <TestimonialCard

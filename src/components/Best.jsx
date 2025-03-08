@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Grid, Button, Card, CardContent } from "@mui/material";
+import { Box, Typography, Grid, Button, Card, CardContent, useMediaQuery, useTheme } from "@mui/material";
 import { styled } from "@mui/system";
 import { motion } from "framer-motion";
 
@@ -61,6 +61,8 @@ const features = [
 ];
 
 const FeaturesSection = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const backgroundShapes = {
     position: 'absolute',
@@ -145,7 +147,7 @@ const FeaturesSection = () => {
   };
 
   return (
-    <Box sx={{ textAlign: "center", py: 8, backgroundColor: "#F9FAFB", position: 'relative', overflow: 'hidden' }}>
+    <Box sx={{ textAlign: "center", py: 8, backgroundColor: "#F9FAFB", position: 'relative', overflow: 'hidden', height: isMobile ? 'auto' : '100vh' }}>
       <div style={backgroundShapes}>
         {generateShapes()}
       </div>
