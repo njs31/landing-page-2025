@@ -14,6 +14,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import LoginIcon from "@mui/icons-material/Login";
+import { Link as ScrollLink } from "react-scroll";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -41,9 +42,18 @@ const Navbar = () => {
 
         <Box sx={{ display: { xs: "none", md: "flex" }, gap: "20px", alignItems: "center" }}>
           {navLinks.map((text) => (
-            <Typography key={text} sx={{ color: "#333", cursor: "pointer" }}>
-              {text}
-            </Typography>
+            <ScrollLink
+              key={text}
+              to={text.toLowerCase()}
+              smooth={true}
+              duration={500}
+              offset={-70}
+              style={{ color: "#333", cursor: "pointer" }}
+            >
+              <Typography>
+                {text}
+              </Typography>
+            </ScrollLink>
           ))}
           <Button startIcon={<LoginIcon />} sx={{ color: "#333", textTransform: "none" }} onClick={handleLoginClick}>
             Log In
@@ -65,9 +75,18 @@ const Navbar = () => {
           </IconButton>
           <List>
             {navLinks.map((text) => (
-              <ListItem button key={text}>
-                <ListItemText primary={text} />
-              </ListItem>
+              <ScrollLink
+                key={text}
+                to={text.toLowerCase()}
+                smooth={true}
+                duration={500}
+                offset={-70}
+                style={{ color: "#333", cursor: "pointer", display: "block", width: "100%" }}
+              >
+                <ListItem button>
+                  <ListItemText primary={text} />
+                </ListItem>
+              </ScrollLink>
             ))}
             <ListItem button onClick={handleLoginClick}>
               <LoginIcon sx={{ marginRight: "10px" }} />

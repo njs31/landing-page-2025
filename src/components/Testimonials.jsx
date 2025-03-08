@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Card, CardContent, Typography, Avatar, Rating, Grid } from '@mui/material';
+import { Box, Card, CardContent, Typography, Avatar, Rating, Grid, useMediaQuery, useTheme } from '@mui/material';
 import { styled } from '@mui/system';
 
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -83,8 +83,11 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
-    <Box sx={{ mt: 4, py: 4 }}>
+    <Box sx={{ mt: 4, py: 4, height: isMobile ? 'auto' : '100vh' }}>
       <Typography variant="h4" align="center" gutterBottom>
         What our customers were saying
       </Typography>

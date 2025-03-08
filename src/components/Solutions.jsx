@@ -90,7 +90,7 @@ const DashboardSolutions = () => {
   };
 
   return (
-    <StyledContainer maxWidth="lg">
+    <StyledContainer minWidth="100vh">
      
       <Dot sx={{ top: '15%', left: '10%', size: 8, color: '#25c9d0' }} />
       <Dot sx={{ top: '25%', left: '15%', size: 12, color: '#25c9d0' }} />
