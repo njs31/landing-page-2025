@@ -87,7 +87,7 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   return (
-    <Box sx={{ mt: 4, py: 4 }}>
+    <Box sx={{ mt: 4, py: 4,  height:'100vh'}}>
       <Typography variant="h4" align="center" gutterBottom>
         What our customers were saying
       </Typography>

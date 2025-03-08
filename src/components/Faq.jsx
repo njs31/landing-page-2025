@@ -64,11 +64,11 @@ const FAQ = () => {
               color: 'white',
               marginBottom: '1rem',
               '& .MuiAccordionSummary-content': {
-                color: 'white', // Set the color of the summary content to white
+                color: 'white', 
               },
               '& .MuiAccordionDetails-root': {
-                backgroundColor: '#c2fff8', // Set the background color of the details to #66ffcc
-                color: 'black', // Set the text color of the details to black
+                backgroundColor: '#c2fff8', 
+                color: 'black', 
               },
             }}
           >
