@@ -3,7 +3,6 @@ import { Box, Typography, Grid, Button, Card, CardContent } from "@mui/material"
 import { styled } from "@mui/system";
 import { motion } from "framer-motion";
 
-// Import icons 
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import SecurityIcon from '@mui/icons-material/Security';
 import DescriptionIcon from '@mui/icons-material/Description';
@@ -14,14 +13,14 @@ import ArticleIcon from '@mui/icons-material/Article';
 const StyledCard = styled(motion.create(Card))(({ theme }) => ({
   padding: "24px",     
   boxShadow: "0 4px 12px rgba(0, 136, 255, 0.1)", 
-  background: "#ffffff",
+  background: "#E3F2FD", // Slight light blue background
   textAlign: "left",  
   transition: "all 0.3s ease",
   overflow: "hidden",
   position: "relative",
   border: "1px solid",
-  borderImage: "linear-gradient(135deg, #00C6FF, #0072FF) 1", // Added linear gradient border
-  borderRadius: "30px", // Added curved border
+  borderImage: "linear-gradient(135deg, #00C6FF, #0072FF) 1", 
+  borderRadius: "30px",
   ":hover": {
     transform: "translateY(-5px)",
     boxShadow: "0 8px 16px rgba(0, 136, 255, 0.2)"
@@ -92,7 +91,7 @@ const FeaturesSection = () => {
     const shapes = [];
     const colors = ['rgba(255, 0, 0, 0.2)', 'rgba(255, 255, 0, 0.2)', 'rgba(0, 255, 0, 0.2)', 'rgba(0, 0, 255, 0.2)'];
 
-    for (let i = 0; i < 60; i++) { // Increased number of shapes
+    for (let i = 0; i < 100; i++) { // Increased number of shapes
       const size = Math.random() * 20 + 5;
       const top = Math.random() * 100;
       const left = Math.random() * 100;
@@ -150,7 +149,7 @@ const FeaturesSection = () => {
       <div style={backgroundShapes}>
         {generateShapes()}
       </div>
-      <Typography variant="h4" fontWeight={700} sx={{ color: "#333", position: 'relative', zIndex: 1 }}>
+      <Typography variant="h4" fontWeight={1000} sx={{ color: "#333", position: 'relative', zIndex: 1 }}>
         Why our product is the <span style={{ color: "#0088FF" }}>best</span>
       </Typography>
 
@@ -168,7 +167,7 @@ const FeaturesSection = () => {
                 <Typography variant="h6" fontWeight={600} sx={{ mt: 1, color: "#333", textAlign: 'left' }}>
                   {feature.title}
                 </Typography>
-                <Typography variant="body2" sx={{ mt: 1, color: "#777", textAlign: 'left' }}>
+                <Typography variant="body2" sx={{ mt: 1, color: "#777", textAlign: 'left', fontSize: '1rem' }}>
                   {feature.description}
                 </Typography>
               </CardContent>

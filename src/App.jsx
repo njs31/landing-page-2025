@@ -11,6 +11,8 @@ import FAQ from './components/Faq'
 import Appd from './components/Appd'
 import StudentPortal from './components/Learning'
 import DashboardSolutions from './components/Solutions'
+import FloatingWhatsApp from './components/whatsapp'
+
 const App = () => {
   return (<>
    < Navbar />  
@@ -18,15 +20,16 @@ const App = () => {
    <Best />
    <Lms />
    <ERPFeaturesGrid />
-   <DashboardSolutions />
    < Modules />
+   <DashboardSolutions />
+   
     <StudentPortal />
    <ContactUsSection />
    <FAQ />
    <Appd />
    <Footer />
   
-   
+   <FloatingWhatsApp />
   </>
   )
 }

@@ -24,8 +24,12 @@ const Navbar = () => {
 
   const navLinks = ["ERP", "LMS", "Fee Plan"];
 
+  const handleLoginClick = () => {
+    window.location.href = "https://onesaz.com/sign-in";
+  };
+
   return (
-    <AppBar position="static" sx={{ background: "#fff",borderBottom:'0.5px solid black', boxShadow: "none", padding: "10px 20px" }}>
+    <AppBar position="static" sx={{ background: "#fff", borderBottom: '0.5px solid black', boxShadow: "none", padding: "10px 20px" }}>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         
         <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
@@ -41,7 +45,7 @@ const Navbar = () => {
               {text}
             </Typography>
           ))}
-          <Button startIcon={<LoginIcon />} sx={{ color: "#333", textTransform: "none" }}>
+          <Button startIcon={<LoginIcon />} sx={{ color: "#333", textTransform: "none" }} onClick={handleLoginClick}>
             Log In
           </Button>
           <Button variant="contained" sx={{ backgroundColor: "#00C4B4", borderRadius: "20px", textTransform: "none" }}>
@@ -65,7 +69,7 @@ const Navbar = () => {
                 <ListItemText primary={text} />
               </ListItem>
             ))}
-            <ListItem button>
+            <ListItem button onClick={handleLoginClick}>
               <LoginIcon sx={{ marginRight: "10px" }} />
               <ListItemText primary="Log In" />
             </ListItem>
