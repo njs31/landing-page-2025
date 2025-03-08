@@ -12,7 +12,7 @@ import Appd from './components/Appd'
 import StudentPortal from './components/Learning'
 import DashboardSolutions from './components/Solutions'
 import FloatingWhatsApp from './components/whatsapp'
-
+import TestimonialsSection from './components/Testimonials'
 const App = () => {
   return (<>
    < Navbar />  
@@ -24,6 +24,7 @@ const App = () => {
    <DashboardSolutions />
    
     <StudentPortal />
+    <TestimonialsSection />
    <ContactUsSection />
    <FAQ />
    <Appd />
