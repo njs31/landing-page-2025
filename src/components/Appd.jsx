@@ -5,9 +5,6 @@ import laptop from '../assets/lapmo/lapmob.png';
 import { 
   Container, 
   Typography, 
-  Grid, 
-  TextField, 
-  Button, 
   Box, 
   useMediaQuery,
   useTheme
@@ -41,10 +38,15 @@ const StyledPhone = styled('img')({
 });
 
 const GooglePlayBadge = () => (
-  <img src={android} alt="Logo" style={{ height: '50px', margin: '0 10px' }}/>
+  <a href="https://play.google.com/store/apps/details?id=com.onesaz.studentapp&hl=en_IN" target="_blank" rel="noopener noreferrer">
+    <img src={android} alt="Google Play" style={{ height: '50px', margin: '0 10px' }}/>
+  </a>
 );
+
 const AppStoreBadge = () => (
-  <img src={apple} alt="Logo" style={{ height: '50px', margin: '0 10px' }}/>
+  <a href="https://apps.apple.com/in/developer/onesaz/id1713076053" target="_blank" rel="noopener noreferrer">
+    <img src={apple} alt="App Store" style={{ height: '50px', margin: '0 10px' }}/>
+  </a>
 );
 
 const generateShapes = () => {
@@ -118,38 +120,19 @@ const Appd = () => {
       <div style={{ position: 'absolute', width: '100%', height: '100%', zIndex: 0 }}>
         {generateShapes()}
       </div>
-      <Typography variant="h4" component="h1" gutterBottom sx={{ position: 'relative', zIndex: 1 }}>
+      <Typography variant="h3" component="h1" gutterBottom sx={{ position: 'relative', zIndex: 1 }}>
         Enjoy a seamless experience with our
       </Typography>
-      <Typography variant="h4" component="h1" gutterBottom style={{ color: 'red', position: 'relative', zIndex: 1 }}>
+      <Typography variant="h3" component="h1" gutterBottom style={{ color: 'red', position: 'relative', zIndex: 1 }}>
         Simplified app
       </Typography>
-      <Typography variant="body1" gutterBottom sx={{ position: 'relative', zIndex: 1 }}>
+      <Typography variant="h5" gutterBottom sx={{ position: 'relative', zIndex: 1 }}>
         Watch the live classes anytime and anywhere
       </Typography>
 
       <Box display="flex" justifyContent="center" alignItems="center" flexDirection={isMobile ? 'column' : 'row'} sx={{ position: 'relative', zIndex: 1 }}>
         <StyledLaptop src={laptop} alt="Laptop" /> 
       </Box>
-
-      <Typography variant="subtitle1" gutterBottom sx={{ position: 'relative', zIndex: 1 }}>
-        Get the App
-      </Typography>
-
-      <Grid container spacing={2} justifyContent="center" alignItems="center" sx={{ position: 'relative', zIndex: 1 }}>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            fullWidth
-            label="Enter mobile number"
-            variant="outlined"
-          />
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Button variant="contained" color="primary" fullWidth>
-            Get link
-          </Button>
-        </Grid>
-      </Grid>
 
       <Box display="flex" justifyContent="center" marginTop={2} sx={{ position: 'relative', zIndex: 1 }}>
         <GooglePlayBadge /> 
