@@ -3,15 +3,15 @@ import { Box, Card, CardContent, Typography, Avatar, Rating, Grid } from '@mui/m
 import { styled } from '@mui/system';
 
 const StyledCard = styled(Card)(({ theme }) => ({
-  backgroundColor: '#FFFFFF',
+  background: 'linear-gradient(135deg, rgba(173, 216, 230, 0.4), rgba(144, 238, 144, 0.2))', // Increased light blueness
   borderRadius: theme.spacing(2),
   boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.05)',
   padding: theme.spacing(2),
   textAlign: 'left',
-  height: '100%', // Make cards same height
+  height: '100%', 
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'space-between', //Distribute space evenly
+  justifyContent: 'space-between',
 }));
 
 const StyledAvatar = styled(Avatar)(({ theme }) => ({
@@ -26,7 +26,6 @@ const TestimonialCard = ({ name, review, rating }) => {
       <CardContent>
         <Box display="flex" flexDirection="column" alignItems="flex-start" mb={2}>
           <StyledAvatar>
-            {/* You can replace this with an actual image source */}
             <Typography variant="h6" color="primary">
               {name.charAt(0)}
             </Typography>
@@ -35,13 +34,11 @@ const TestimonialCard = ({ name, review, rating }) => {
             {name}
           </Typography>
         </Box>
-        <Typography variant="body2" color="textSecondary">
+        <Typography variant="body2" color="textSecondary" paragraph>
           {review}
         </Typography>
-      </CardContent>
-      <Box mt={2}>
         <Rating name="read-only" value={rating} readOnly />
-      </Box>
+      </CardContent>
     </StyledCard>
   );
 };
@@ -87,7 +84,7 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   return (
-    <Box sx={{ mt: 4, py: 4,  height:'100vh'}}>
+    <Box sx={{ mt: 4, py: 4 }}>
       <Typography variant="h4" align="center" gutterBottom>
         What our customers were saying
       </Typography>
