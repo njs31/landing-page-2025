@@ -147,7 +147,7 @@ const FeaturesSection = () => {
   };
 
   return (
-    <Box sx={{ textAlign: "center", py: 8, backgroundColor: "#F9FAFB", position: 'relative', overflow: 'hidden', height: isMobile ? 'auto' : '100vh' }}>
+    <Box sx={{ textAlign: "center", py: 8, px: { xs: 2, sm: 4, md: 8 }, backgroundColor: "#F9FAFB", position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
       <div style={backgroundShapes}>
         {generateShapes()}
       </div>
@@ -155,7 +155,7 @@ const FeaturesSection = () => {
         Why our product is the <span style={{ color: "#0088FF" }}>best</span>
       </Typography>
 
-      <Grid container spacing={4} justifyContent="center" sx={{ mt: 4, px: { xs: 2, sm: 4, md: 8 }, position: 'relative', zIndex: 1 }}>
+      <Grid container spacing={4} justifyContent="center" sx={{ mt: 4, position: 'relative', zIndex: 1 }}>
         {features.map((feature, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <StyledCard

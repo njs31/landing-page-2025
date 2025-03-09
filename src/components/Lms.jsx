@@ -193,6 +193,7 @@ const LMSFeaturesGrid = () => {
           bgcolor: '#1a2a42', 
           color: 'white', 
           height: '100vh',
+          
           py: 6, 
           px: { xs: 2, md: 3 },
           overflow: 'hidden',

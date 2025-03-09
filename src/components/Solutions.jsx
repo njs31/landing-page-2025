@@ -6,8 +6,6 @@ import {
   Paper, 
   Button, 
   useMediaQuery, 
-  Tab, 
-  Tabs,
   useTheme
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -16,6 +14,13 @@ const StyledContainer = styled(Container)(({ theme }) => ({
   paddingTop: theme.spacing(4),
   paddingBottom: theme.spacing(6),
   position: 'relative',
+  height: '100vh', 
+  width: '100vw', 
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  border: '0.5px dashed black', 
+  overflow: 'hidden', 
 }));
 
 const DashboardHeader = styled(Typography)(({ theme }) => ({
@@ -23,27 +28,26 @@ const DashboardHeader = styled(Typography)(({ theme }) => ({
   color: '#34425a',
   textAlign: 'center',
   marginBottom: theme.spacing(1),
+  fontSize: theme.breakpoints.down('sm') ? '2rem' : '3rem', // Increased font size
 }));
 
 const DashboardSubheader = styled(Typography)(({ theme }) => ({
   color: '#6b7c93',
   textAlign: 'center',
   marginBottom: theme.spacing(3),
+  fontSize: theme.breakpoints.down('sm') ? '1.25rem' : '1.5rem', // Increased font size
 }));
 
 const TabButton = styled(Button)(({ theme, active }) => ({
   borderRadius: '24px',
-  padding: '8px 16px',
+  padding: '12px 24px', // Increased padding
   margin: theme.spacing(0.5),
   textTransform: 'none',
   backgroundColor: active ? '#25c9d0' : '#e0e0e0',
   color: active ? 'white' : '#555',
+  fontSize: theme.breakpoints.down('sm') ? '1rem' : '1.25rem', // Increased font size
   '&:hover': {
     backgroundColor: active ? '#1cb6bd' : '#d5d5d5',
-  },
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '0.75rem',
-    padding: '6px 12px',
   },
 }));
 
@@ -52,6 +56,8 @@ const DashboardImage = styled('img')(({ theme }) => ({
   borderRadius: theme.spacing(1),
   boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
   border: '1px solid #eaeaea',
+  maxHeight: '65vh', // Increased max height
+  objectFit: 'contain', // Ensure image fits within the container
 }));
 
 const Dot = styled(Box)(({ theme, size = 10, color = '#25c9d0' }) => ({
@@ -76,7 +82,6 @@ const DashboardSolutions = () => {
   const [activeTab, setActiveTab] = useState('branch');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -90,8 +95,7 @@ const DashboardSolutions = () => {
   };
 
   return (
-    <StyledContainer minWidth="100vh">
-     
+    <StyledContainer>
       <Dot sx={{ top: '15%', left: '10%', size: 8, color: '#25c9d0' }} />
       <Dot sx={{ top: '25%', left: '15%', size: 12, color: '#25c9d0' }} />
       <Dot sx={{ top: '10%', right: '12%', size: 8, color: '#25c9d0' }} />
@@ -108,7 +112,6 @@ const DashboardSolutions = () => {
           Vital KPI's, Real-time updates, Customisable dashlets
         </DashboardSubheader>
 
-       
         <Box 
           sx={{ 
             display: 'flex', 
