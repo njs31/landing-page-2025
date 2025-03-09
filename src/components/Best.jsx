@@ -10,7 +10,7 @@ import CastForEducationIcon from '@mui/icons-material/CastForEducation';
 import SchoolIcon from '@mui/icons-material/School';
 import ArticleIcon from '@mui/icons-material/Article';
 
-const StyledCard = styled(motion.create(Card))(({ theme }) => ({
+const StyledCard = styled(motion(Card))(({ theme }) => ({
   padding: "24px",     
   boxShadow: "0 4px 12px rgba(0, 136, 255, 0.1)", 
   background: "#E3F2FD", // Slight light blue background
@@ -93,7 +93,7 @@ const FeaturesSection = () => {
     const shapes = [];
     const colors = ['rgba(255, 0, 0, 0.2)', 'rgba(255, 255, 0, 0.2)', 'rgba(0, 255, 0, 0.2)', 'rgba(0, 0, 255, 0.2)'];
 
-    for (let i = 0; i < 100; i++) { // Increased number of shapes
+    for (let i = 0; i < 100; i++) { 
       const size = Math.random() * 20 + 5;
       const top = Math.random() * 100;
       const left = Math.random() * 100;
