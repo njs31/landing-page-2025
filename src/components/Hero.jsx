@@ -85,7 +85,8 @@ const Navbar = () => {
           alt="Logo 4"
           sx={{ width: "100px", marginRight: { xs: "100px", sm: "100px", md: "200px", lg: "400px" } }}
         />
-      </Marquee>
+      </Marquee>git pull origin main
+
     </>
   );
 };
