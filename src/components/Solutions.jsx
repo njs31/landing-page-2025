@@ -43,11 +43,11 @@ const TabButton = styled(Button)(({ theme, active }) => ({
   padding: '12px 24px', // Increased padding
   margin: theme.spacing(0.5),
   textTransform: 'none',
-  backgroundColor: active ? '#25c9d0' : '#e0e0e0',
-  color: active ? 'white' : '#555',
+  backgroundColor: active === 'true' ? '#25c9d0' : '#e0e0e0',
+  color: active === 'true' ? 'white' : '#555',
   fontSize: theme.breakpoints.down('sm') ? '1rem' : '1.25rem', // Increased font size
   '&:hover': {
-    backgroundColor: active ? '#1cb6bd' : '#d5d5d5',
+    backgroundColor: active === 'true' ? '#1cb6bd' : '#d5d5d5',
   },
 }));
 
@@ -122,28 +122,28 @@ const DashboardSolutions = () => {
           }}
         >
           <TabButton 
-            active={activeTab === 'branch'} 
+            active={activeTab === 'branch' ? 'true' : 'false'} 
             onClick={() => handleTabChange('branch')}
           >
             Branch analysis
           </TabButton>
           
           <TabButton 
-            active={activeTab === 'finance'} 
+            active={activeTab === 'finance' ? 'true' : 'false'} 
             onClick={() => handleTabChange('finance')}
           >
             Finance
           </TabButton>
           
           <TabButton 
-            active={activeTab === 'user'} 
+            active={activeTab === 'user' ? 'true' : 'false'} 
             onClick={() => handleTabChange('user')}
           >
             User management
           </TabButton>
           
           <TabButton 
-            active={activeTab === 'attendance'} 
+            active={activeTab === 'attendance' ? 'true' : 'false'} 
             onClick={() => handleTabChange('attendance')}
           >
             Attendance

@@ -87,7 +87,7 @@ const TestimonialsSection = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <Box sx={{ mt: 4, py: 4, px: { xs: 2, md: 4 }, height: isMobile ? 'auto' : '100vh' }}>
+    <Box sx={{ mt: 4, py: 4, px: { xs: 2, md: 4 }, height: isMobile ? 'auto' : 'auto' }}>
       <Typography 
         variant="h4" 
         align="center" 

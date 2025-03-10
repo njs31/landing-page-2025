@@ -10,7 +10,9 @@ import CastForEducationIcon from '@mui/icons-material/CastForEducation';
 import SchoolIcon from '@mui/icons-material/School';
 import ArticleIcon from '@mui/icons-material/Article';
 
-const StyledCard = styled(motion(Card))(({ theme }) => ({
+const MotionCard = motion.create(Card);
+
+const StyledCard = styled(MotionCard)(({ theme }) => ({
   padding: "24px",     
   boxShadow: "0 4px 12px rgba(0, 136, 255, 0.1)", 
   background: "#E3F2FD", // Slight light blue background

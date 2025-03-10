@@ -56,7 +56,7 @@ const Navbar = () => {
       </Box>
 
     
-      <Marquee>
+      <Marquee sx={{background:'grey'}}>
         <Box
           component="img"
           src="/src/assets/clients/c1.png"

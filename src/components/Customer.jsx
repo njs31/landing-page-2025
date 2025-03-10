@@ -6,7 +6,7 @@ const Customer = () => {
     component="div" 
     sx={{ 
       width: "100vw", 
-      height: "3%", 
+      height: "6vh", 
       borderBottom: '1px dashed grey' 
     }}
   >

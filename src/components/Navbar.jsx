@@ -30,7 +30,7 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ background: "#fff", borderBottom: '0.5px solid black', boxShadow: "none", padding: "10px 20px" }}>
+    <AppBar position="static" sx={{ background: "#fff", borderBottom: '0.5px solid black', boxShadow: "none", padding: { xs: "10px 10px", md: "10px 20px" } }}>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         
         <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
