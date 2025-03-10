@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import c1 from "../assets/clients/c1.png";
+import c2 from "../assets/clients/c2.png";
+import c3 from "../assets/clients/c3.png";
+import c4 from "../assets/clients/c4.png";
 import {
   AppBar,
   Toolbar,
@@ -56,28 +60,28 @@ const Navbar = () => {
       </Box>
 
     
-      <Marquee sx={{background:'grey'}}>
+      <Marquee sx={{background:'grey' }}>
         <Box
           component="img"
-          src="/src/assets/clients/c1.png"
+          src={c1}
           alt="Logo 1"
           sx={{ width: "100px", marginRight: { xs: "100px", sm: "100px", md: "200px", lg: "400px" } }}
         />
         <Box
           component="img"
-          src="/src/assets/clients/c2.png"
+          src={c2}
           alt="Logo 2"
           sx={{ width: "100px", marginRight: { xs: "100px", sm: "100px", md: "200px", lg: "400px"  } }}
         />
         <Box
           component="img"
-          src="/src/assets/clients/c3.png"
+          src={c3}
           alt="Logo 3"
           sx={{ width: "100px", marginRight: { xs: "100px", sm: "100px", md: "200px", lg: "400px"  } }}
         />
         <Box
           component="img"
-          src="/src/assets/clients/c4.png"
+          src={c4}
           alt="Logo 4"
           sx={{ width: "100px", marginRight: { xs: "100px", sm: "100px", md: "200px", lg: "400px" } }}
         />
