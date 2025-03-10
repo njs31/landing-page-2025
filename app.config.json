@@ -1,0 +1,10 @@
+{
+  "apps" : [
+    {
+      "name"      : "student_landing",
+      "script"    : "npx",
+      "interpreter": "none",
+      "args": "serve -s dist -l 6179"
+    }
+  ]
+}
