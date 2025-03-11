@@ -49,7 +49,7 @@ const Navbar = () => {
           <video
             width="800"
             height="450"
-            src="/src/assets/video.mp4"
+            src="https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/video.mp4"
             title="Custom video player"
             autoPlay
             loop

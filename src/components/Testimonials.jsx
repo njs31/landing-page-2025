@@ -87,7 +87,7 @@ const TestimonialsSection = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <Box sx={{ mt: 4, py: 4, px: { xs: 2, md: 4 }, height: isMobile ? 'auto' : 'auto' }}>
+    <Box sx={{ mt: 4, py: 4, px: { xs: 2, md: 4 }, mb: 4, height: isMobile ? 'auto' : 'auto' }}>
       <Typography 
         variant="h4" 
         align="center" 
@@ -97,7 +97,7 @@ const TestimonialsSection = () => {
           fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' } 
         }}
       >
-        What our customers were saying
+        What our customers are saying
       </Typography>
       <Typography variant="subtitle1" align="center" color="textSecondary" paragraph>
         Vital KPI's, Real-time updates, Customisable dashlets
