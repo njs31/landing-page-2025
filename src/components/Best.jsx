@@ -66,136 +66,165 @@ const FeaturesSection = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const backgroundShapes = {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    zIndex: 0,
-    overflow: 'hidden',
-  };
+  // Create a separate component for background shapes to improve performance
+  const BackgroundShapes = () => {
+    const backgroundShapes = {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      zIndex: 0,
+      overflow: 'hidden',
+      pointerEvents: 'none', // This ensures the shapes don't interfere with clicks
+    };
 
-  const shapeStyle = {
-    position: 'absolute',
-    borderRadius: '50%',
-    animation: 'float 6s ease-in-out infinite alternate',
-  };
+    const shapeStyle = {
+      position: 'absolute',
+      borderRadius: '50%',
+      animation: 'float 6s ease-in-out infinite alternate',
+    };
 
-  const triangleStyle = {
-    position: 'absolute',
-    clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)',
-    animation: 'float 8s ease-in-out infinite alternate-reverse',
-  };
+    const triangleStyle = {
+      position: 'absolute',
+      clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)',
+      animation: 'float 8s ease-in-out infinite alternate-reverse',
+    };
 
-  const rectangleStyle = {
-    position: 'absolute',
-    animation: 'float 10s ease-in-out infinite alternate',
-  };
+    const rectangleStyle = {
+      position: 'absolute',
+      animation: 'float 10s ease-in-out infinite alternate',
+    };
 
-  const generateShapes = () => {
-    const shapes = [];
-    const colors = ['rgba(255, 0, 0, 0.2)', 'rgba(255, 255, 0, 0.2)', 'rgba(0, 255, 0, 0.2)', 'rgba(0, 0, 255, 0.2)'];
+    const generateShapes = () => {
+      const shapes = [];
+      const colors = ['rgba(255, 0, 0, 0.2)', 'rgba(255, 255, 0, 0.2)', 'rgba(0, 255, 0, 0.2)', 'rgba(0, 0, 255, 0.2)'];
 
-    for (let i = 0; i < 100; i++) { 
-      const size = Math.random() * 20 + 5;
-      const top = Math.random() * 100;
-      const left = Math.random() * 100;
-      const color = colors[Math.floor(Math.random() * colors.length)];
+      // Reduced number of shapes for better performance
+      for (let i = 0; i < 30; i++) { 
+        const size = Math.random() * 20 + 5;
+        const top = Math.random() * 100;
+        const left = Math.random() * 100;
+        const color = colors[Math.floor(Math.random() * colors.length)];
 
-      if (i % 3 === 0) {
-        shapes.push(
-          <div
-            key={`circle-${i}`}
-            style={{
-              ...shapeStyle,
-              width: `${size}px`,
-              height: `${size}px`,
-              top: `${top}%`,
-              left: `${left}%`,
-              background: color,
-            }}
-          />
-        );
-      } else if (i % 3 === 1) {
-        shapes.push(
-          <div
-            key={`triangle-${i}`}
-            style={{
-              ...triangleStyle,
-              width: `${size}px`,
-              height: `${size}px`,
-              top: `${top}%`,
-              left: `${left}%`,
-              background: color,
-            }}
-          />
-        );
-      } else {
-        shapes.push(
-          <div
-            key={`rectangle-${i}`}
-            style={{
-              ...rectangleStyle,
-              width: `${size * 1.5}px`,
-              height: `${size * 0.8}px`,
-              top: `${top}%`,
-              left: `${left}%`,
-              background: color,
-            }}
-          />
-        );
+        if (i % 3 === 0) {
+          shapes.push(
+            <div
+              key={`circle-${i}`}
+              style={{
+                ...shapeStyle,
+                width: `${size}px`,
+                height: `${size}px`,
+                top: `${top}%`,
+                left: `${left}%`,
+                background: color,
+              }}
+            />
+          );
+        } else if (i % 3 === 1) {
+          shapes.push(
+            <div
+              key={`triangle-${i}`}
+              style={{
+                ...triangleStyle,
+                width: `${size}px`,
+                height: `${size}px`,
+                top: `${top}%`,
+                left: `${left}%`,
+                background: color,
+              }}
+            />
+          );
+        } else {
+          shapes.push(
+            <div
+              key={`rectangle-${i}`}
+              style={{
+                ...rectangleStyle,
+                width: `${size * 1.5}px`,
+                height: `${size * 0.8}px`,
+                top: `${top}%`,
+                left: `${left}%`,
+                background: color,
+              }}
+            />
+          );
+        }
       }
-    }
-    return shapes;
+      return shapes;
+    };
+
+    return <div style={backgroundShapes}>{generateShapes()}</div>;
   };
 
   return (
-    <Box sx={{ textAlign: "center", py: 8, px: { xs: 2, sm: 4, md: 8 }, backgroundColor: "#F9FAFB", position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
-      <div style={backgroundShapes}>
-        {generateShapes()}
-      </div>
-      <Typography variant="h4" fontWeight={1000} sx={{ color: "#333", position: 'relative', zIndex: 1 }}>
-        Why our product is the <span style={{ color: "#0088FF" }}>best</span>
-      </Typography>
+    <Box 
+      sx={{ 
+        width: '100%',
+        textAlign: "center", 
+        py: 8, 
+        px: { xs: 2, sm: 4, md: 8 }, 
+        backgroundColor: "#F9FAFB", 
+        position: 'relative', 
+        overflow: 'hidden',
+        // Changed from minHeight to height with a defined value
+        height: 'auto',
+        // Add max-width and margins to center the container
+        maxWidth: '100%',
+        mx: 'auto',
+        // Add proper box-sizing to prevent overflow
+        boxSizing: 'border-box',
+        // Create a containment context for child elements
+        contain: 'layout paint',
+      }}
+    >
+      <BackgroundShapes />
+      
+      <Box sx={{ position: 'relative', zIndex: 1, maxWidth: '1200px', mx: 'auto' }}>
+        <Typography variant="h4" fontWeight={1000} sx={{ color: "#333", mb: 6 }}>
+          Why our product is the <span style={{ color: "#0088FF" }}>best</span>
+        </Typography>
 
-      <Grid container spacing={4} justifyContent="center" sx={{ mt: 4, position: 'relative', zIndex: 1 }}>
-        {features.map((feature, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <StyledCard
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
-                <Box sx={{ mb: 2, textAlign: 'left' }}>
-                  {feature.icon} 
-                </Box>
-                <Typography variant="h6" fontWeight={600} sx={{ mt: 1, color: "#333", textAlign: 'left' }}>
-                  {feature.title}
-                </Typography>
-                <Typography variant="body2" sx={{ mt: 1, color: "#777", textAlign: 'left', fontSize: '1rem' }}>
-                  {feature.description}
-                </Typography>
-              </CardContent>
-            </StyledCard>
-          </Grid>
-        ))}
-      </Grid>
+        <Grid container spacing={4} justifyContent="center">
+          {features.map((feature, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <StyledCard
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
+                  <Box sx={{ mb: 2, textAlign: 'left' }}>
+                    {feature.icon} 
+                  </Box>
+                  <Typography variant="h6" fontWeight={600} sx={{ mt: 1, color: "#333", textAlign: 'left' }}>
+                    {feature.title}
+                  </Typography>
+                  <Typography variant="body2" sx={{ mt: 1, color: "#777", textAlign: 'left', fontSize: '1rem' }}>
+                    {feature.description}
+                  </Typography>
+                </CardContent>
+              </StyledCard>
+            </Grid>
+          ))}
+        </Grid>
 
-      <Button
-        variant="contained"
-        sx={{
-          mt: 6,
-          backgroundColor: "#0088FF",
-          padding: "12px 40px",
-          borderRadius: "30px",
-          textTransform: "none",
-          fontSize: "18px",
-          boxShadow: "0 6px 12px rgba(0, 136, 255, 0.3)",
-          ":hover": { backgroundColor: "#0066CC" },
-          position: 'relative', zIndex: 1
-        }}
-      >
-        Sign up
-      </Button>
+        <Button
+          variant="contained"
+          sx={{
+            mt: 6,
+            mb: 2,
+            backgroundColor: "#0088FF",
+            padding: "12px 40px",
+            borderRadius: "30px",
+            textTransform: "none",
+            fontSize: "18px",
+            boxShadow: "0 6px 12px rgba(0, 136, 255, 0.3)",
+            ":hover": { backgroundColor: "#0066CC" },
+          }}
+        >
+          Sign up
+        </Button>
+      </Box>
     </Box>
   );
 };

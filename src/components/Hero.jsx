@@ -1,51 +1,68 @@
-import React, { useState } from "react";
-import c1 from "../assets/clients/c1.png";
-import c2 from "../assets/clients/c2.png";
-import c3 from "../assets/clients/c3.png";
-import c4 from "../assets/clients/c4.png";
+import React from "react";
 import {
-  AppBar,
-  Toolbar,
   Typography,
-  IconButton,
   Button,
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
   Box,
-  Container,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
-import LoginIcon from "@mui/icons-material/Login";
 import Marquee from "react-fast-marquee";
 
-const Navbar = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
+// Add this to your index.html or import a font package
+// <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
-  const navLinks = ["ERP", "LMS", "Fee Plan"];
-
+const HeroSection = () => {
   return (
     <>
-    
-      <Box sx={{ borderBotton:'1 px solid black',background: "linear-gradient(to bottom, #00416A, #E4E5E6)", padding: "50px 20px", textAlign: "center" }}>
-        <Typography variant="h4" sx={{ color: "white", fontWeight: "bold" }}>
+      {/* Hero Section */}
+      <Box 
+        sx={{ 
+          background: "linear-gradient(to bottom, #00416A, #E4E5E6)", 
+          padding: { xs: "40px 16px", sm: "50px 20px", md: "60px 24px" }, 
+          textAlign: "center" 
+        }}
+      >
+        <Typography 
+          variant="h2" 
+          sx={{ 
+            color: "white", 
+            fontWeight: "bold",
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem", lg: "3.5rem" },
+            lineHeight: 1.2,
+            marginBottom: { xs: 2, sm: 3, md: 4 }
+          }}
+        >
           Revolutionize Education Management with our <span style={{ color: "#00C4B4" }}>Onesaz</span> ERP Solutions
         </Typography>
-        <Typography sx={{ color: "white", marginTop: "10px" }}>
+        
+        <Typography 
+          sx={{ 
+            color: "white", 
+            marginTop: "10px",
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem", lg: "1.5rem" },
+            maxWidth: "800px",
+            margin: "0 auto 24px"
+          }}
+        >
           Transform the way educational institutions operate with our cutting-edge ERP solutions tailored for the ed-tech industry.
         </Typography>
-        <Button variant="contained" sx={{ marginTop: "20px", backgroundColor: "#00C4B4" }}>
+        
+        <Button 
+          variant="contained" 
+          sx={{ 
+            marginTop: "20px", 
+            backgroundColor: "#00C4B4",
+            "&:hover": { backgroundColor: "#00a396" },
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem" },
+            padding: { xs: "8px 16px", sm: "10px 20px", md: "12px 24px" },
+            fontWeight: 500
+          }}
+        >
           Try it NOW
         </Button>
 
-        
-        <Box sx={{ display: "flex", justifyContent: "center", marginTop: "30px" }}>
+        <Box sx={{ display: "flex", justifyContent: "center", marginTop: { xs: "24px", sm: "30px", md: "40px" } }}>
           <video
             width="800"
             height="450"
@@ -54,41 +71,61 @@ const Navbar = () => {
             autoPlay
             loop
             muted
-            style={{ width: "100%", maxWidth: "800px", height: "auto", aspectRatio: "16/9" }}
+            style={{ 
+              width: "100%", 
+              maxWidth: "800px", 
+              height: "auto", 
+              aspectRatio: "16/9",
+              borderRadius: "8px",
+              boxShadow: "0 4px 20px rgba(0,0,0,0.2)"
+            }}
           ></video>
         </Box>
       </Box>
 
-    
-      <Marquee sx={{background:'grey' }}>
-        <Box
-          component="img"
-          src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/clients/c1.png'
-          alt="Logo 1"
-          sx={{ width: "100px", marginRight: { xs: "100px", sm: "100px", md: "200px", lg: "400px" } }}
-        />
-        <Box
-          component="img"
-          src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/clients/c2.png'
-          alt="Logo 2"
-          sx={{ width: "100px", marginRight: { xs: "100px", sm: "100px", md: "200px", lg: "400px"  } }}
-        />
-        <Box
-          component="img"
-          src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/clients/c3.png'
-          alt="Logo 3"
-          sx={{ width: "100px", marginRight: { xs: "100px", sm: "100px", md: "200px", lg: "400px"  } }}
-        />
-        <Box
-          component="img"
-          src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/clients/c4.png'
-          alt="Logo 4"
-          sx={{ width: "100px", marginRight: { xs: "100px", sm: "100px", md: "200px", lg: "400px" } }}
-        />
-      </Marquee>
-
+      {/* Client Logos Marquee */}
+      <Box sx={{ background: "#f5f5f5", padding: "16px 0" }}>
+        <Marquee gradient={false} speed={40}>
+          <Box
+            component="img"
+            src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/clients/c1.png'
+            alt="Logo 1"
+            sx={{ 
+              height: { xs: "50px", sm: "60px", md: "70px" }, 
+              marginRight: { xs: "100px", sm: "150px", md: "200px", lg: "300px" } 
+            }}
+          />
+          <Box
+            component="img"
+            src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/clients/c2.png'
+            alt="Logo 2"
+            sx={{ 
+              height: { xs: "50px", sm: "60px", md: "70px" }, 
+              marginRight: { xs: "100px", sm: "150px", md: "200px", lg: "300px" } 
+            }}
+          />
+          <Box
+            component="img"
+            src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/clients/c3.png'
+            alt="Logo 3"
+            sx={{ 
+              height: { xs: "50px", sm: "60px", md: "70px" }, 
+              marginRight: { xs: "100px", sm: "150px", md: "200px", lg: "300px" } 
+            }}
+          />
+          <Box
+            component="img"
+            src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/clients/c4.png'
+            alt="Logo 4"
+            sx={{ 
+              height: { xs: "50px", sm: "60px", md: "70px" }, 
+              marginRight: { xs: "100px", sm: "150px", md: "200px", lg: "300px" } 
+            }}
+          />
+        </Marquee>
+      </Box>
     </>
   );
 };
 
-export default Navbar;
+export default HeroSection;
