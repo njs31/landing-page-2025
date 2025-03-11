@@ -1,10 +1,10 @@
 .custom-cursor {
     position: fixed;
-    width: 32px; /* Adjust size as needed */
-    height: 32px; /* Adjust size as needed */
-    pointer-events: none; /* Makes the cursor "pass through" to elements beneath */
+    width: 32px; 
+    height: 32px; 
+    pointer-events: none; 
     z-index: 9999;
-    transform: translate(-50%, -50%); /* Centers the cursor image on the pointer position */
+    transform: translate(-50%, -50%); 
   }
   a, 
 button, 
@@ -16,13 +16,12 @@ input[type="button"],
   cursor: none !important;
 }
 
-/* For cases where you need to target specific elements */
 .your-link-class,
 .your-button-class {
   cursor: none !important;
 }
 
-/* You can also add this to your global CSS file */
+
 * {
   cursor: none !important;
 }

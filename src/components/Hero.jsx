@@ -63,25 +63,25 @@ const Navbar = () => {
       <Marquee sx={{background:'grey' }}>
         <Box
           component="img"
-          src={c1}
+          src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/clients/c1.png'
           alt="Logo 1"
           sx={{ width: "100px", marginRight: { xs: "100px", sm: "100px", md: "200px", lg: "400px" } }}
         />
         <Box
           component="img"
-          src={c2}
+          src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/clients/c2.png'
           alt="Logo 2"
           sx={{ width: "100px", marginRight: { xs: "100px", sm: "100px", md: "200px", lg: "400px"  } }}
         />
         <Box
           component="img"
-          src={c3}
+          src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/clients/c3.png'
           alt="Logo 3"
           sx={{ width: "100px", marginRight: { xs: "100px", sm: "100px", md: "200px", lg: "400px"  } }}
         />
         <Box
           component="img"
-          src={c4}
+          src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/clients/c4.png'
           alt="Logo 4"
           sx={{ width: "100px", marginRight: { xs: "100px", sm: "100px", md: "200px", lg: "400px" } }}
         />

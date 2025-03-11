@@ -34,7 +34,7 @@ const Navbar = () => {
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         
         <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <img src="../src/assets/onesquare.png" alt="Logo" style={{ width: "40px", height: "40px" }} />
+          <img src="https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/onesquare.png" alt="Logo" style={{ width: "40px", height: "40px" }} />
           <Typography variant="h5" sx={{ color: "#333", fontWeight: "bold" }}>
             ONESAZ
           </Typography>
