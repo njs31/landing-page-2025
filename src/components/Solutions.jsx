@@ -88,10 +88,10 @@ const DashboardSolutions = () => {
   };
 
   const dashboardImages = {
-    branch: '/src/assets/state/chart.png',
-    finance: '/src/assets/state/fin.png',
-    user: '/src/assets/state/user.png',
-    attendance: '/src/assets/state/attn.png'
+    branch: 'https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/state/chart.png',
+    finance: 'https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/state/fin.png',
+    user: 'https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/state/user.png',
+    attendance: 'https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/state/attn.png'
   };
 
   return (

@@ -108,7 +108,7 @@ const StudentPortal = () => {
             <GradientBackground>
               <Box
                 component="img"
-                src="./src/assets/learn.png"
+                src="https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/learn.png"
                 alt="Student Dashboard Preview"
                 sx={{
                   maxWidth: '100%',
