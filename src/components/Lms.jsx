@@ -205,7 +205,7 @@ const Lms = () => {
   }, [isScrollLocked, lastCardVisible]);
 
   return (
-    <Box id="lms"
+    <Box 
       ref={sectionRef}
       sx={{ 
         borderTop: '1px solid pink', 

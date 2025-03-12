@@ -38,7 +38,7 @@ const Footer = () => {
                   Company
                 </Typography>
                 <Box>
-                  <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+                  <Link href="https://onesaz.com/about-us" color="inherit" display="block" underline="none" sx={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
                     About us
                   </Link>
                   <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
@@ -87,7 +87,7 @@ const Footer = () => {
             <Typography variant="body2" sx={{ marginTop: '1rem', fontFamily: 'Roboto, sans-serif' }}>
               © 2025 ACACADHUB EDU TECH PRIVATE LIMITED.<br></br> All rights reserved.
             </Typography>
-            <Link href="#" color="inherit" sx={{ display: 'flex', alignItems: 'center', marginTop: '1rem', fontSize: '1.2rem', fontWeight: 'bold' }} underline="none">
+            <Link href="https://onesaz.com/sign-in" color="inherit" sx={{ display: 'flex', alignItems: 'center', marginTop: '1rem', fontSize: '1.2rem', fontWeight: 'bold' }} underline="none">
               → Log In
             </Link>
             <Box sx={{ marginTop: '1rem' }}>
