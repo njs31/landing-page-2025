@@ -11,8 +11,8 @@ import {
 import { styled } from '@mui/material/styles';
 
 const StyledContainer = styled(Container)(({ theme }) => ({
-  paddingTop: theme.spacing(4),
-  paddingBottom: theme.spacing(6),
+  paddingTop: theme.spacing(3),
+  paddingBottom: theme.spacing(4),
   position: 'relative',
   height: '100vh', 
   width: '100vw', 
@@ -24,33 +24,36 @@ const StyledContainer = styled(Container)(({ theme }) => ({
 }));
 
 const DashboardHeader = styled(Typography)(({ theme }) => ({
-  fontWeight: 700,
+  fontWeight: 600,
   color: '#1F2937',
   textAlign: 'center',
-  marginBottom: theme.spacing(2),
-  fontSize: '3.5rem',
+  marginBottom: theme.spacing(1.5),
+  fontSize: '2.5rem',
   [theme.breakpoints.down('sm')]: {
-    fontSize: '2.5rem', // Correct way to handle breakpoints in styled-components
+    fontSize: '1.8rem',
   },
 }));
 
 const DashboardSubheader = styled(Typography)(({ theme }) => ({
   color: '#6B7280',
   textAlign: 'center',
-  marginBottom: theme.spacing(4),
+  marginBottom: theme.spacing(3),
   fontWeight: 500,
-  fontSize: theme.breakpoints.down('sm') ? '1.5rem' : '1.75rem',
+  fontSize: '1.25rem',
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1rem',
+  },
 }));
 
 const TabButton = styled(Button)(({ theme, active }) => ({
-  borderRadius: '24px',
-  padding: '14px 28px',
+  borderRadius: '20px',
+  padding: '10px 20px',
   margin: theme.spacing(0.5),
   textTransform: 'none',
   backgroundColor: active ? '#25c9d0' : '#e0e0e0',
   color: active ? 'white' : '#333',
-  fontSize: theme.breakpoints.down('sm') ? '1.2rem' : '1.4rem',
-  fontWeight: 600,
+  fontSize: '1rem',
+  fontWeight: 500,
   '&:hover': {
     backgroundColor: active ? '#1cb6bd' : '#d5d5d5',
   },
@@ -59,9 +62,9 @@ const TabButton = styled(Button)(({ theme, active }) => ({
 const DashboardImage = styled('img')(({ theme }) => ({
   width: '100%',
   borderRadius: theme.spacing(1),
-  boxShadow: '0 6px 30px rgba(0,0,0,0.15)',
+  boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
   border: '1px solid #eaeaea',
-  maxHeight: '70vh',
+  maxHeight: '60vh',
   objectFit: 'contain',
 }));
 
@@ -82,13 +85,13 @@ const DashboardSolutions = () => {
   };
 
   return (
-    <StyledContainer sx={{ paddingTop: '40px'}}>
+    <StyledContainer>
       <Box>
-        <DashboardHeader variant={isMobile ? "h4" : "h3"}>
+        <DashboardHeader variant={isMobile ? "h5" : "h4"}>
           Our Solutions that will Blow Your Mind
         </DashboardHeader>
         
-        <DashboardSubheader variant="body1">
+        <DashboardSubheader variant="body2">
           Vital KPIs, Real-time Updates, Customizable Dashlets
         </DashboardSubheader>
 
@@ -97,7 +100,7 @@ const DashboardSolutions = () => {
             display: 'flex', 
             justifyContent: 'center', 
             flexWrap: 'wrap', 
-            mb: 3,
+            mb: 2,
             gap: { xs: 0.5, sm: 1 }
           }}
         >
@@ -113,7 +116,7 @@ const DashboardSolutions = () => {
         </Box>
 
         <Paper 
-          elevation={3} 
+          elevation={2} 
           sx={{ 
             p: { xs: 1, sm: 2 },
             bgcolor: 'white', 
