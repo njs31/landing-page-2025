@@ -208,7 +208,8 @@ const LMSFeaturesGrid = () => {
     <Box 
       ref={sectionRef}
       sx={{ 
-        borderBottom: '0.5px solid pink', 
+        borderTop: '1px solid pink', 
+        borderBottom: '1px solid pink', 
         bgcolor: '#1a2a42', 
         color: 'white', 
         height: '100vh', // Always 100vh while locked

@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Best from "./components/Best";
-import Lms from "./components/Lms";
+import Lmsf from "./components/Lms";
 import ERPFeaturesGrid from "./components/Erp";
 import Modules from "./components/Modules";
 import ContactUsSection from "./components/Letstalk";
@@ -18,16 +18,15 @@ import logoImage from './assets/onesquare.png';
 const App = () => {
   return (
     
-      <div className="App">
+      <>
       <CustomCursor imageSrc={logoImage} />
       <Navbar />
       <Hero />
       <Best />
-      <Lms />
-      <ERPFeaturesGrid />
+      <Lmsf />
+      <Lmsf />
       <Modules />
       <DashboardSolutions />
-
       <StudentPortal />
       <TestimonialsSection />
       <ContactUsSection />
@@ -35,7 +34,7 @@ const App = () => {
       <Appd />
       <Footer />
       <FloatingWhatsApp /> 
-      </div>
+      </>
   
   );
 };

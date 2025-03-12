@@ -63,23 +63,24 @@ const HeroSection = () => {
         </Button>
 
         <Box sx={{ display: "flex", justifyContent: "center", marginTop: { xs: "24px", sm: "30px", md: "40px" } }}>
-          <video
-            width="800"
-            height="450"
-            src="https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/video.mp4"
-            title="Custom video player"
-            autoPlay
-            loop
-            muted
-            style={{ 
-              width: "100%", 
-              maxWidth: "800px", 
-              height: "auto", 
-              aspectRatio: "16/9",
-              borderRadius: "8px",
-              boxShadow: "0 4px 20px rgba(0,0,0,0.2)"
-            }}
-          ></video>
+        <video
+  width="800"
+  height="450"
+  src="https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/video.mp4"
+  title="Custom video player"
+  autoPlay
+  loop
+  muted
+  style={{ 
+    width: "100%", 
+    maxWidth: "800px", 
+    height: "auto", 
+    aspectRatio: "16/9",
+   // Rounded corners
+    border: "6px solid white", // White border
+    boxShadow: "0 4px 20px rgba(0,0,0,0.2)"
+  }}
+></video>
         </Box>
       </Box>
 

@@ -24,28 +24,30 @@ const StyledContainer = styled(Container)(({ theme }) => ({
 }));
 
 const DashboardHeader = styled(Typography)(({ theme }) => ({
-  fontWeight: 'bold',
-  color: '#34425a',
+  fontWeight: 700,
+  color: '#1F2937',
   textAlign: 'center',
-  marginBottom: theme.spacing(1),
-  fontSize: theme.breakpoints.down('sm') ? '2rem' : '3rem', // Increased font size
+  marginBottom: theme.spacing(2),
+  fontSize: theme.breakpoints.down('sm') ? '2.5rem' : '3.5rem',
 }));
 
 const DashboardSubheader = styled(Typography)(({ theme }) => ({
-  color: '#6b7c93',
+  color: '#6B7280',
   textAlign: 'center',
-  marginBottom: theme.spacing(3),
-  fontSize: theme.breakpoints.down('sm') ? '1.25rem' : '1.5rem', // Increased font size
+  marginBottom: theme.spacing(4),
+  fontWeight: 500,
+  fontSize: theme.breakpoints.down('sm') ? '1.5rem' : '1.75rem',
 }));
 
 const TabButton = styled(Button)(({ theme, active }) => ({
   borderRadius: '24px',
-  padding: '12px 24px', // Increased padding
+  padding: '14px 28px',
   margin: theme.spacing(0.5),
   textTransform: 'none',
   backgroundColor: active ? '#25c9d0' : '#e0e0e0',
-  color: active ? 'white' : '#555',
-  fontSize: theme.breakpoints.down('sm') ? '1rem' : '1.25rem', // Increased font size
+  color: active ? 'white' : '#333',
+  fontSize: theme.breakpoints.down('sm') ? '1.2rem' : '1.4rem',
+  fontWeight: 600,
   '&:hover': {
     backgroundColor: active ? '#1cb6bd' : '#d5d5d5',
   },
@@ -54,28 +56,10 @@ const TabButton = styled(Button)(({ theme, active }) => ({
 const DashboardImage = styled('img')(({ theme }) => ({
   width: '100%',
   borderRadius: theme.spacing(1),
-  boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+  boxShadow: '0 6px 30px rgba(0,0,0,0.15)',
   border: '1px solid #eaeaea',
-  maxHeight: '65vh', // Increased max height
-  objectFit: 'contain', // Ensure image fits within the container
-}));
-
-const Dot = styled(Box)(({ theme, size = 10, color = '#25c9d0' }) => ({
-  width: size,
-  height: size,
-  borderRadius: '50%',
-  backgroundColor: color,
-  position: 'absolute',
-  zIndex: -1,
-}));
-
-const Circle = styled(Box)(({ theme, size = 40, color = '#25c9d0' }) => ({
-  width: size,
-  height: size,
-  borderRadius: '50%',
-  border: `2px solid ${color}`,
-  position: 'absolute',
-  zIndex: -1,
+  maxHeight: '70vh',
+  objectFit: 'contain',
 }));
 
 const DashboardSolutions = () => {
@@ -96,20 +80,13 @@ const DashboardSolutions = () => {
 
   return (
     <StyledContainer>
-      <Dot sx={{ top: '15%', left: '10%', size: 8, color: '#25c9d0' }} />
-      <Dot sx={{ top: '25%', left: '15%', size: 12, color: '#25c9d0' }} />
-      <Dot sx={{ top: '10%', right: '12%', size: 8, color: '#25c9d0' }} />
-      <Dot sx={{ bottom: '20%', right: '15%', size: 10, color: '#ffd740' }} />
-      <Circle sx={{ top: '5%', right: '5%', size: 30, color: '#25c9d0' }} />
-      <Circle sx={{ bottom: '10%', left: '5%', size: 50, color: '#25c9d0' }} />
-
       <Box>
         <DashboardHeader variant={isMobile ? "h4" : "h3"}>
-          Our Solutions that will blow your mind
+          Our Solutions that will Blow Your Mind
         </DashboardHeader>
         
         <DashboardSubheader variant="body1">
-          Vital KPI's, Real-time updates, Customisable dashlets
+          Vital KPIs, Real-time Updates, Customizable Dashlets
         </DashboardSubheader>
 
         <Box 
@@ -121,40 +98,22 @@ const DashboardSolutions = () => {
             gap: { xs: 0.5, sm: 1 }
           }}
         >
-          <TabButton 
-            active={activeTab === 'branch'} 
-            onClick={() => handleTabChange('branch')}
-          >
-            Branch analysis
-          </TabButton>
-          
-          <TabButton 
-            active={activeTab === 'finance'} 
-            onClick={() => handleTabChange('finance')}
-          >
-            Finance
-          </TabButton>
-          
-          <TabButton 
-            active={activeTab === 'user'} 
-            onClick={() => handleTabChange('user')}
-          >
-            User management
-          </TabButton>
-          
-          <TabButton 
-            active={activeTab === 'attendance'} 
-            onClick={() => handleTabChange('attendance')}
-          >
-            Attendance
-          </TabButton>
+          {['branch', 'finance', 'user', 'attendance'].map((tab) => (
+            <TabButton 
+              key={tab} 
+              active={activeTab === tab} 
+              onClick={() => handleTabChange(tab)}
+            >
+              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+            </TabButton>
+          ))}
         </Box>
 
         <Paper 
-          elevation={0} 
+          elevation={3} 
           sx={{ 
             p: { xs: 1, sm: 2 },
-            bgcolor: 'transparent', 
+            bgcolor: 'white', 
             position: 'relative',
             overflow: 'hidden',
             borderRadius: 2
@@ -165,20 +124,6 @@ const DashboardSolutions = () => {
               src={dashboardImages[activeTab]} 
               alt={`${activeTab} dashboard`}
             />
-            
-            <Box 
-              sx={{ 
-                position: 'absolute', 
-                bottom: 0, 
-                right: 0,
-                display: isMobile ? 'none' : 'block'
-              }}
-            >
-              <svg width="80" height="80" viewBox="0 0 80 80">
-                <path d="M60,40 Q65,20 80,10 Q60,25 55,40 Z" fill="#FFD740" />
-                <path d="M50,50 Q55,30 70,20 Q50,35 45,50 Z" fill="#25C9D0" />
-              </svg>
-            </Box>
           </Box>
         </Paper>
       </Box>

@@ -30,12 +30,31 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ background: "#fff", borderBottom: '0.5px solid black', boxShadow: "none", padding: { xs: "10px 10px", md: "10px 20px" } }}>
+    <AppBar
+      position="static"
+      sx={{
+        background: "#fff",
+        borderBottom: "0.5px solid black",
+        boxShadow: "none",
+        padding: { xs: "10px 10px", md: "10px 20px" },
+      }}
+    >
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        
         <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <img src="https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/onesquare.png" alt="Logo" style={{ width: "40px", height: "40px" }} />
-          <Typography variant="h5" sx={{ color: "#333", fontWeight: "bold" }}>
+          <img
+            src="https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/onesquare.png"
+            alt="Logo"
+            style={{ width: "40px", height: "40px" }}
+          />
+          <Typography
+            variant="h5"
+            sx={{
+              color: "#333",
+              fontWeight: { xs: "700", md: "800" },
+              fontSize: { xs: "1.2rem", md: "1.8rem" },
+              fontFamily: "Poppins, sans-serif",
+            }}
+          >
             ONESAZ
           </Typography>
         </Box>
@@ -48,17 +67,43 @@ const Navbar = () => {
               smooth={true}
               duration={500}
               offset={-70}
-              style={{ color: "#333", cursor: "pointer" }}
+              style={{
+                color: "#333",
+                cursor: "pointer",
+                fontFamily: "Poppins, sans-serif",
+                fontWeight: "700",
+                fontSize: "1.2rem",
+              }}
             >
-              <Typography>
-                {text}
-              </Typography>
+              <Typography>{text}</Typography>
             </ScrollLink>
           ))}
-          <Button startIcon={<LoginIcon />} sx={{ color: "#333", textTransform: "none" }} onClick={handleLoginClick}>
+
+          <Button
+            startIcon={<LoginIcon />}
+            sx={{
+              color: "#333",
+              textTransform: "none",
+              fontWeight: "700",
+              fontSize: "1.1rem",
+              fontFamily: "Poppins, sans-serif",
+            }}
+            onClick={handleLoginClick}
+          >
             Log In
           </Button>
-          <Button variant="contained" sx={{ backgroundColor: "#00C4B4", borderRadius: "20px", textTransform: "none" }}>
+
+          <Button
+            variant="contained"
+            sx={{
+              backgroundColor: "#00C4B4",
+              borderRadius: "20px",
+              textTransform: "none",
+              fontWeight: "700",
+              fontSize: "1.1rem",
+              fontFamily: "Poppins, sans-serif",
+            }}
+          >
             Try for Free
           </Button>
         </Box>
@@ -84,16 +129,34 @@ const Navbar = () => {
                 style={{ color: "#333", cursor: "pointer", display: "block", width: "100%" }}
               >
                 <ListItem button>
-                  <ListItemText primary={text} />
+                  <ListItemText
+                    primary={text}
+                    sx={{ fontFamily: "Poppins, sans-serif", fontWeight: "700" }}
+                  />
                 </ListItem>
               </ScrollLink>
             ))}
+
             <ListItem button onClick={handleLoginClick}>
               <LoginIcon sx={{ marginRight: "10px" }} />
-              <ListItemText primary="Log In" />
+              <ListItemText
+                primary="Log In"
+                sx={{ fontFamily: "Poppins, sans-serif", fontWeight: "700" }}
+              />
             </ListItem>
+
             <ListItem button sx={{ textAlign: "center" }}>
-              <Button variant="contained" sx={{ width: "100%", backgroundColor: "#00C4B4", borderRadius: "20px" }}>
+              <Button
+                variant="contained"
+                sx={{
+                  width: "100%",
+                  backgroundColor: "#00C4B4",
+                  borderRadius: "20px",
+                  fontWeight: "700",
+                  fontSize: "1.1rem",
+                  fontFamily: "Poppins, sans-serif",
+                }}
+              >
                 Try for Free
               </Button>
             </ListItem>
