@@ -88,7 +88,8 @@ const FeaturesSection = () => {
         px: { xs: 3, sm: 5, md: 10 },
         background: "linear-gradient(135deg, #F0F7FF, #E3F2FD)",
         position: "relative",
-        border : "1px solid #0072FF",
+        border: "1px solid #0072FF",
+        mb: 0, // Ensure no margin at the bottom
       }}
     >
       <Typography

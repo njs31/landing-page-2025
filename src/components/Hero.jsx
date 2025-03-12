@@ -89,7 +89,7 @@ const HeroSection = () => {
         <Marquee gradient={false} speed={40}>
           <Box
             component="img"
-            src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/clients/c1.png'
+            src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/c1.png'
             alt="Logo 1"
             sx={{ 
               height: { xs: "50px", sm: "60px", md: "70px" }, 
@@ -98,7 +98,7 @@ const HeroSection = () => {
           />
           <Box
             component="img"
-            src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/clients/c2.png'
+            src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/c2.png'
             alt="Logo 2"
             sx={{ 
               height: { xs: "50px", sm: "60px", md: "70px" }, 
@@ -107,7 +107,7 @@ const HeroSection = () => {
           />
           <Box
             component="img"
-            src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/clients/c3.png'
+            src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/c3.png'
             alt="Logo 3"
             sx={{ 
               height: { xs: "50px", sm: "60px", md: "70px" }, 
@@ -116,7 +116,7 @@ const HeroSection = () => {
           />
           <Box
             component="img"
-            src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/clients/c4.png'
+            src='https://onesaz-assets.s3.ap-south-1.amazonaws.com/assets/c4.png'
             alt="Logo 4"
             sx={{ 
               height: { xs: "50px", sm: "60px", md: "70px" }, 

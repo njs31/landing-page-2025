@@ -28,7 +28,10 @@ const DashboardHeader = styled(Typography)(({ theme }) => ({
   color: '#1F2937',
   textAlign: 'center',
   marginBottom: theme.spacing(2),
-  fontSize: theme.breakpoints.down('sm') ? '2.5rem' : '3.5rem',
+  fontSize: '3.5rem',
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '2.5rem', // Correct way to handle breakpoints in styled-components
+  },
 }));
 
 const DashboardSubheader = styled(Typography)(({ theme }) => ({
@@ -79,7 +82,7 @@ const DashboardSolutions = () => {
   };
 
   return (
-    <StyledContainer>
+    <StyledContainer sx={{ paddingTop: '40px'}}>
       <Box>
         <DashboardHeader variant={isMobile ? "h4" : "h3"}>
           Our Solutions that will Blow Your Mind

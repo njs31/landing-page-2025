@@ -206,7 +206,7 @@ const Erp = () => {
   }, [isScrollLocked, lastCardVisible]);
 
   return (
-    <Box 
+    <Box id="erp"
       ref={sectionRef}
       sx={{ 
         borderTop: '1px solid pink', 
@@ -218,7 +218,8 @@ const Erp = () => {
         px: { xs: 2, md: 3 },
         overflow: 'hidden', // Prevent content overflow
         transition: 'top 0.3s ease-out',
-        position: 'relative'
+        position: 'relative',
+       
       }}
     >  
       <Container maxWidth="lg" sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
