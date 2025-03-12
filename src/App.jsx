@@ -2,8 +2,8 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Best from "./components/Best";
-import Lmsf from "./components/Lms";
-import ERPFeaturesGrid from "./components/Erp";
+import Erp from "./components/Erp";
+import Lms from "./components/Lms";
 import Modules from "./components/Modules";
 import ContactUsSection from "./components/Letstalk";
 import Footer from "./components/Footer";
@@ -23,8 +23,8 @@ const App = () => {
       <Navbar />
       <Hero />
       <Best />
-      <Lmsf />
-      <Lmsf />
+      <Erp />
+      <Lms />
       <Modules />
       <DashboardSolutions />
       <StudentPortal />
