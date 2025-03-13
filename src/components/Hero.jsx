@@ -47,20 +47,7 @@ const HeroSection = () => {
           Transform the way educational institutions operate with our cutting-edge ERP solutions tailored for the ed-tech industry.
         </Typography>
         
-        <Button 
-          variant="contained" 
-          sx={{ 
-            marginTop: "20px", 
-            backgroundColor: "#00C4B4",
-            "&:hover": { backgroundColor: "#00a396" },
-            fontFamily: "'Poppins', sans-serif",
-            fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem" },
-            padding: { xs: "8px 16px", sm: "10px 20px", md: "12px 24px" },
-            fontWeight: 500
-          }}
-        >
-          Try it NOW
-        </Button>
+        
 
         <Box sx={{ display: "flex", justifyContent: "center", marginTop: { xs: "24px", sm: "30px", md: "40px" } }}>
         <video
@@ -85,7 +72,7 @@ const HeroSection = () => {
       </Box>
 
       {/* Client Logos Marquee */}
-      <Box sx={{ background: "#f5f5f5", padding: "16px 0" }}>
+      <Box sx={{ background: "#e0e2e4", padding: "16px 0" }}>
         <Marquee gradient={false} speed={40}>
           <Box
             component="img"

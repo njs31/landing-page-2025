@@ -1,148 +1,175 @@
 import React from "react";
 import {
-  Box,
-  Typography,
-  Grid,
-  Button,
   Card,
   CardContent,
-  useMediaQuery,
-  useTheme,
+  Typography,
+  Grid,
+  Box,
+  SvgIcon,
 } from "@mui/material";
-import { styled } from "@mui/system";
-import { motion } from "framer-motion";
-
-import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
-import SecurityIcon from "@mui/icons-material/Security";
-import DescriptionIcon from "@mui/icons-material/Description";
-import CastForEducationIcon from "@mui/icons-material/CastForEducation";
+import SettingsIcon from "@mui/icons-material/Settings";
+import LockIcon from "@mui/icons-material/Lock";
+import CameraIcon from "@mui/icons-material/Camera";
 import SchoolIcon from "@mui/icons-material/School";
-import ArticleIcon from "@mui/icons-material/Article";
+import AutoGraphIcon from "@mui/icons-material/AutoGraph";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
 
-const MotionCard = motion(Card);
-
-const StyledCard = styled(MotionCard)(({ theme }) => ({
-  padding: "28px",
-  boxShadow: "0 6px 18px rgba(0, 136, 255, 0.15)",
-  background: "#E3F2FD", // Light blue background
-  textAlign: "left",
-  transition: "all 0.3s ease",
-  borderRadius: "20px",
-  border: "3px solid",
-  borderImage: "linear-gradient(135deg, #0072FF, #A070FF) 1",
-  "&:hover": {
-    transform: "translateY(-5px)",
-    boxShadow: "0 10px 25px rgba(0, 136, 255, 0.3)",
-  },
-}));
-
-const features = [
-  {
-    title: "Customized Solutions",
-    description:
-      "Our tech-savvy team listens to your needs, delivering fast, tailored solutions.",
-    icon: <RocketLaunchIcon sx={{ fontSize: 40, color: "#0072FF" }} />,
-  },
-  {
-    title: "4 Layer Security",
-    description:
-      "Your data is guarded by 4 layers of protection, ensuring a hack-free environment.",
-    icon: <SecurityIcon sx={{ fontSize: 40, color: "#0072FF" }} />,
-  },
-  {
-    title: "OMR Scan Analysis",
-    description:
-      "Easily scan any OMR sheet with your mobile camera for instant analysis.",
-    icon: <DescriptionIcon sx={{ fontSize: 40, color: "#0072FF" }} />,
-  },
-  {
-    title: "Adaptive Learning",
-    description:
-      "Our system uses AI to analyze student performance and provide personalized recommendations.",
-    icon: <CastForEducationIcon sx={{ fontSize: 40, color: "#0072FF" }} />,
-  },
-  {
-    title: "School Operating System",
-    description:
-      "Manage enrollment, attendance, and assessments seamlessly with our ERP solution.",
-    icon: <SchoolIcon sx={{ fontSize: 40, color: "#0072FF" }} />,
-  },
-  {
-    title: "Best Content",
-    description:
-      "Access a question bank of 300,000+ expertly curated questions organized by topics.",
-    icon: <ArticleIcon sx={{ fontSize: 40, color: "#0072FF" }} />,
-  },
-];
-
-const FeaturesSection = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+export default function FeatureCards() {
+  const features = [
+    {
+      icon: SettingsIcon,
+      title: "Customized Applications",
+      description:
+        "Our tech-savvy team listens to your needs, delivering fast, tailored solutions.",
+    },
+    {
+      icon: LockIcon,
+      title: "4 Layer security",
+      description:
+        "Your data is guarded by 4 layers of protection, ensuring a hack-free environment. Notified whenever data is edited/damaged.",
+    },
+    {
+      icon: CameraIcon,
+      title: "OMR scan analysis",
+      description:
+        "Easily scan any OMR sheet with your mobile camera. We provide instant, comprehensive analysis with 14 detailed insights.",
+    },
+    {
+      icon: AutoGraphIcon,
+      title: "Adaptive Learning",
+      description:
+        "Our system leverages advanced algorithms to analyze individual student performance and preferences.",
+    },
+    {
+      icon: SchoolIcon,
+      title: "School operating system",
+      description:
+        "Our ERP solution seamlessly integrates all aspects of education management, from enrollment to assessments, into a unified platform.",
+    },
+    {
+      icon: MenuBookIcon,
+      title: "Best content",
+      description:
+        "Explore Onesaz's question bank with 300,000+ questions, subject-wise, topics, and subtopics – all expertly organized to save your time & energy.",
+    },
+  ];
 
   return (
     <Box
       sx={{
-        width: "100%",
-        textAlign: "center",
-        py: 10,
-        px: { xs: 3, sm: 5, md: 10 },
-        background: "linear-gradient(135deg, #F0F7FF, #E3F2FD)",
+        backgroundColor: "#F8F9FC",
+        minHeight: "100vh",
+        py: 8,
+        px: 2,
         position: "relative",
-        border: "1px solid #0072FF",
-        mb: 0, // Ensure no margin at the bottom
       }}
     >
-      <Typography
-        variant={isMobile ? "h5" : "h3"}
-        fontWeight={900}
-        sx={{ color: "#222", mb: 6 }}
-      >
-        Why Choose <span style={{ color: "#0072FF" }}>Our Product?</span>
-      </Typography>
+      {/* Title */}
+      <Box sx={{ textAlign: "center", mb: 6 }}>
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          color="#2D3B6F"
+          sx={{ display: "inline-block" }}
+        >
+          Why our product is the{" "}
+        </Typography>
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          color="#00D2C6"
+          sx={{ display: "inline-block" }}
+        >
+          best
+        </Typography>
+      </Box>
 
+      {/* Decorative Elements */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: "10%",
+          right: "5%",
+          width: 12,
+          height: 12,
+          backgroundColor: "#00D2C6",
+          borderRadius: "50%",
+        }}
+      />
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: "15%",
+          left: "5%",
+          width: 12,
+          height: 12,
+          backgroundColor: "#00D2C6",
+          borderRadius: "50%",
+        }}
+      />
+
+      {/* Feature Cards */}
       <Grid container spacing={4} justifyContent="center">
         {features.map((feature, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <StyledCard whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              <CardContent sx={{ display: "flex", flexDirection: "column" }}>
-                <Box sx={{ mb: 2, textAlign: "left" }}>{feature.icon}</Box>
-                <Typography
-                  variant="h6"
-                  fontWeight={700}
-                  sx={{ color: "#333", textAlign: "left" }}
-                >
-                  {feature.title}
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{ mt: 1, color: "#555", textAlign: "left" }}
-                >
-                  {feature.description}
-                </Typography>
-              </CardContent>
-            </StyledCard>
+            <Card
+              sx={{
+                borderRadius: 3,
+                boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.05)",
+                textAlign: "center",
+                p: 3,
+                backgroundColor: "white",
+                position: "relative",
+                overflow: "hidden",
+              }}
+            >
+              {/* Corner Decorative Element */}
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  right: 0,
+                  width: "50px",
+                  height: "50px",
+                  background: "url(/corner-pattern.svg) no-repeat center",
+                  backgroundSize: "contain",
+                  opacity: 0.2,
+                }}
+              />
+
+              {/* Icon with Background Circle */}
+              <Box
+                sx={{
+                  width: 50,
+                  height: 50,
+                  borderRadius: "50%",
+                  bgcolor: "#F8F9FC",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  mx: "auto",
+                  mb: 2,
+                }}
+              >
+                <SvgIcon component={feature.icon} fontSize="large" color="primary" />
+              </Box>
+
+              {/* Card Content */}
+              <Typography
+                variant="h6"
+                fontWeight="bold"
+                color="primary"
+                sx={{ mb: 1 }}
+              >
+                {feature.title}
+              </Typography>
+              <Typography variant="body2" color="#6B7AB7">
+                {feature.description}
+              </Typography>
+            </Card>
           </Grid>
         ))}
       </Grid>
-
-      <Button
-        variant="contained"
-        sx={{
-          mt: 8,
-          backgroundColor: "#0072FF",
-          padding: "14px 48px",
-          borderRadius: "30px",
-          textTransform: "none",
-          fontSize: "20px",
-          fontWeight: "bold",
-          boxShadow: "0 8px 18px rgba(135, 199, 255, 0.4)",
-          ":hover": { backgroundColor: "#005BB5" },
-        }}
-      >
-        Sign Up Now
-      </Button>
     </Box>
   );
-};
-
-export default FeaturesSection;
+}

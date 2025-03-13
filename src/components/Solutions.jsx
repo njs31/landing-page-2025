@@ -19,7 +19,6 @@ const StyledContainer = styled(Container)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  border: '0.5px dashed black', 
   overflow: 'hidden', 
 }));
 
@@ -62,8 +61,7 @@ const TabButton = styled(Button)(({ theme, active }) => ({
 const DashboardImage = styled('img')(({ theme }) => ({
   width: '100%',
   borderRadius: theme.spacing(1),
-  boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-  border: '1px solid #eaeaea',
+  border: 'none', // Remove border
   maxHeight: '60vh',
   objectFit: 'contain',
 }));
@@ -116,13 +114,13 @@ const DashboardSolutions = () => {
         </Box>
 
         <Paper 
-          elevation={2} 
+          elevation={0} // Remove shadow
           sx={{ 
             p: { xs: 1, sm: 2 },
-            bgcolor: 'white', 
+            bgcolor: 'transparent', // Make background transparent
             position: 'relative',
             overflow: 'hidden',
-            borderRadius: 2
+            borderRadius: 0 // Remove border radius
           }}
         >
           <Box sx={{ position: 'relative' }}>
