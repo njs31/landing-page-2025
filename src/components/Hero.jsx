@@ -48,7 +48,6 @@ const HeroSection = () => {
         </Typography>
         
         
-
         <Box sx={{ display: "flex", justifyContent: "center", marginTop: { xs: "24px", sm: "30px", md: "40px" } }}>
         <video
   width="800"
@@ -63,9 +62,7 @@ const HeroSection = () => {
     maxWidth: "800px", 
     height: "auto", 
     aspectRatio: "16/9",
-   // Rounded corners
-    border: "6px solid white", // White border
-    boxShadow: "0 4px 20px rgba(0,0,0,0.2)"
+   
   }}
 ></video>
         </Box>
