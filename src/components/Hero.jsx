@@ -68,7 +68,7 @@ const HeroSection = () => {
         </Box>
       </Box>
 
-      {/* Client Logos Marquee */}
+      
       <Box sx={{ background: "#e0e2e4", padding: "16px 0" }}>
         <Marquee gradient={false} speed={40}>
           <Box

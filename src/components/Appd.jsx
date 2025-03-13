@@ -13,35 +13,34 @@ import { styled } from '@mui/system';
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   backgroundColor: '#f8f9fa',
-  padding: theme.spacing(6, 3),
+  padding: theme.spacing(2, 2), // Reduced top padding
   textAlign: 'center',
   minHeight: '100vh',
   minWidth: '100vw',
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'center',
+  justifyContent: 'flex-start', // Changed to start
   alignItems: 'center',
   position: 'relative',
   overflow: 'hidden',
 }));
 
-const StyledLaptop = styled('img')({
-  maxWidth: '80%',
+const StyledLaptop = styled('img')(({ theme }) => ({
+  maxWidth: '80%', // Default for larger screens
   height: 'auto',
-  marginBottom: '30px',
-});
-
-const GooglePlayBadge = () => (
-  <a href="https://play.google.com/store/apps/details?id=com.onesaz.studentapp&hl=en_IN" target="_blank" rel="noopener noreferrer">
-    <img src={android} alt="Google Play" style={{ height: '60px', margin: '0 15px' }}/>
-  </a>
-);
-
-const AppStoreBadge = () => (
-  <a href="https://apps.apple.com/in/developer/onesaz/id1713076053" target="_blank" rel="noopener noreferrer">
-    <img src={apple} alt="App Store" style={{ height: '60px', margin: '0 15px' }}/>
-  </a>
-);
+  marginBottom: theme.spacing(3),
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '100%', // Full width on mobile screens
+  },
+}));
+const StoreBadge = styled('img')(({ theme }) => ({
+  height: '60px',
+  margin: '0 15px',
+  [theme.breakpoints.down('sm')]: {
+    height: '45px',
+    margin: '0 8px',
+  },
+}));
 
 const Appd = () => {
   const theme = useTheme();
@@ -49,23 +48,57 @@ const Appd = () => {
 
   return (
     <StyledContainer maxWidth="md">
-      <Typography variant={isMobile ? "h4" : "h2"} component="h1" gutterBottom fontWeight={700} sx={{ position: 'relative', zIndex: 1 }}>
-        Enjoy a seamless experience with our
-      </Typography>
-      <Typography variant={isMobile ? "h4" : "h2"} component="h1" gutterBottom fontWeight={700} sx={{ color: 'red', position: 'relative', zIndex: 1 }}>
-        Simplified app
-      </Typography>
-      <Typography variant={isMobile ? "h6" : "h4"} gutterBottom fontWeight={500} sx={{ position: 'relative', zIndex: 1 }}>
-        Watch the live classes anytime and anywhere
-      </Typography>
+      <Box sx={{ marginTop: theme.spacing(4) }}>
+        <Typography 
+          variant={isMobile ? "h5" : "h2"} 
+          component="h1" 
+          gutterBottom 
+          fontWeight={700} 
+          sx={{ position: 'relative', zIndex: 1 }}
+        >
+          Enjoy a seamless experience with our
+        </Typography>
+        <Typography 
+          variant={isMobile ? "h5" : "h2"} 
+          component="h1" 
+          gutterBottom 
+          fontWeight={700} 
+          sx={{ color: 'red', position: 'relative', zIndex: 1 }}
+        >
+          Simplified app
+        </Typography>
+        <Typography 
+          variant={isMobile ? "body1" : "h4"} 
+          gutterBottom 
+          fontWeight={500} 
+          sx={{ position: 'relative', zIndex: 1 }}
+        >
+          Watch the live classes anytime and anywhere
+        </Typography>
+      </Box>
 
-      <Box display="flex" justifyContent="center" alignItems="center" flexDirection={isMobile ? 'column' : 'row'} sx={{ position: 'relative', zIndex: 1 }}>
+      <Box 
+        display="flex" 
+        justifyContent="center" 
+        alignItems="center" 
+        flexDirection="column" 
+        sx={{ position: 'relative', zIndex: 1, flexGrow: 1 }} // Added flexGrow to push content down
+      >
         <StyledLaptop src={laptop} alt="Laptop" /> 
       </Box>
 
-      <Box display="flex" justifyContent="center" marginTop={3} sx={{ position: 'relative', zIndex: 1 }}>
-        <GooglePlayBadge /> 
-        <AppStoreBadge /> 
+      <Box 
+        display="flex" 
+        justifyContent="center" 
+        marginBottom={theme.spacing(4)} // Added bottom margin
+        sx={{ position: 'relative', zIndex: 1 }}
+      >
+        <a href="https://play.google.com/store/apps/details?id=com.onesaz.studentapp&hl=en_IN" target="_blank" rel="noopener noreferrer">
+          <StoreBadge src={android} alt="Google Play" />
+        </a>
+        <a href="https://apps.apple.com/in/developer/onesaz/id1713076053" target="_blank" rel="noopener noreferrer">
+          <StoreBadge src={apple} alt="App Store" />
+        </a>
       </Box>
     </StyledContainer>
   );
