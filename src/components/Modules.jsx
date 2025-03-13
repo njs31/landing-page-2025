@@ -53,11 +53,9 @@ const LMSFeaturesGrid = () => {
   return (
     <Box 
       sx={{ 
-        borderTop: '1px solid pink', 
-        borderBottom: '1px solid pink', 
+        height: '100vh', // Set height to 100vh
         bgcolor: '#1a2a42', 
         color: 'white', 
-        minHeight: '100vh', 
         py: 6, 
         px: { xs: 2, md: 3 },
         position: 'relative'
@@ -65,10 +63,10 @@ const LMSFeaturesGrid = () => {
     >  
       <Container maxWidth="lg" sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
         <Box sx={{ mb: 5, textAlign: 'left' }}>
-          <Typography variant="h3" fontWeight="500" sx={{ fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' } }}>
+          <Typography variant="h3" fontWeight="500" sx={{ fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' }, fontFamily: 'Poppins, sans-serif' }}>
           Modules for <Box component="span" sx={{ color: '#4FC3F7' }}>Streamlined</Box> Operations
           </Typography>
-          <Typography variant="subtitle1" sx={{ opacity: 0.7, mb: 3, fontSize: { xs: '1rem', sm: '1.1rem', md: '1.2rem' } }}>
+          <Typography variant="subtitle1" sx={{ opacity: 0.7, mb: 3, fontSize: { xs: '1rem', sm: '1.1rem', md: '1.2rem' }, fontFamily: 'Poppins, sans-serif' }}>
           streamline operations, enhance collaboration, and optimize resource allocation.
           </Typography>
 
@@ -84,7 +82,8 @@ const LMSFeaturesGrid = () => {
                 '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' },
                 borderLeft: '3px solid #9a6aff',
                 px: 2,
-                fontSize: { xs: '0.9rem', sm: '1rem' }
+                fontSize: { xs: '0.9rem', sm: '1rem' },
+                fontFamily: 'Poppins, sans-serif'
               }}
             >
               Improve Management Efficiency
@@ -100,7 +99,8 @@ const LMSFeaturesGrid = () => {
                 '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' },
                 borderLeft: '3px solid #ff9f6a',
                 px: 2,
-                fontSize: { xs: '0.9rem', sm: '1rem' }
+                fontSize: { xs: '0.9rem', sm: '1rem' },
+                fontFamily: 'Poppins, sans-serif'
               }}
             >
               Enhance Student's Learning
@@ -153,7 +153,7 @@ const LMSFeaturesGrid = () => {
                 sx={{ 
                   p: 3,
                   height: 'auto',
-                  minHeight: '400px',
+                  minHeight: '450px', // Increased height
                   width: getCardWidth(), 
                   bgcolor: 'white',
                   borderRadius: 2,
@@ -174,7 +174,7 @@ const LMSFeaturesGrid = () => {
                   fontWeight="500" 
                   gutterBottom 
                   color="text.primary"
-                  sx={{ fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem' } }}
+                  sx={{ fontSize: { xs: '1.75rem', sm: '2rem', md: '2.25rem' }, fontFamily: 'Poppins, sans-serif' }} // Increased font size
                 >
                   {feature.title}
                 </Typography>
@@ -182,8 +182,9 @@ const LMSFeaturesGrid = () => {
                   variant="body1" 
                   sx={{ 
                     color: 'text.secondary', 
-                    fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.3rem' },
-                    lineHeight: 1.6
+                    fontSize: { xs: '1.2rem', sm: '1.3rem', md: '1.4rem' }, // Increased font size
+                    lineHeight: 1.6,
+                    fontFamily: 'Poppins, sans-serif'
                   }}
                 >
                   {feature.description}
