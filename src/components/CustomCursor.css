@@ -1,0 +1,28 @@
+.custom-cursor {
+  position: fixed;
+  width: 32px; /* Adjust size as needed */
+  height: 32px; /* Adjust size as needed */
+  pointer-events: none; /* Makes the cursor "pass through" to elements beneath */
+  z-index: 9999;
+  transform: translate(-50%, -50%); /* Centers the cursor image on the pointer position */
+}
+
+/* Override cursor styles only on non-mobile devices */
+@media (min-width: 769px) {
+  a, 
+  button, 
+  [role="button"],
+  input[type="submit"],
+  input[type="button"],
+  .clickable,
+  [onclick] {
+    cursor: none !important;
+  }
+}
+
+/* Ensure normal cursor behavior on mobile */
+@media (max-width: 768px) {
+  * {
+    cursor: auto !important;
+  }
+}

@@ -17,13 +17,10 @@ const Footer = () => {
         position: 'relative',
       }}
     >
-      
-     
-
       <Container maxWidth="lg">
-        <Grid container spacing={4}  justifyContent="space-between">
+        <Grid container spacing={4} justifyContent="space-between">
           <Grid item xs={12} md={3}>
-            <Typography variant="h5" component="div" sx={{ fontWeight: 'bold', fontFamily: 'Roboto, sans-serif' }}>
+            <Typography variant="h4" component="div" sx={{ fontWeight: 'bold', fontFamily: 'Roboto, sans-serif' }}>
               Onesaz
             </Typography>
             <Typography variant="body1" sx={{ marginTop: '1rem', fontFamily: 'Roboto, sans-serif' }}>
@@ -37,48 +34,48 @@ const Footer = () => {
           <Grid item xs={12} md={6}>
             <Grid container spacing={2} justifyContent="space-around">
               <Grid item xs={12} sm={4}>
-                <Typography variant="subtitle2" sx={{ fontWeight: 'bold', marginBottom: '0.5rem', fontFamily: 'Roboto, sans-serif', fontSize: '1.5rem' }}>
+                <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: '1rem', fontSize: '1.5rem' }}>
                   Company
                 </Typography>
                 <Box>
-                  <Link href="#" color="inherit" display="block" underline="none" sx={{ marginBottom: '1.2rem', fontFamily: 'Roboto, sans-serif' }}>
+                  <Link href="https://onesaz.com/about-us" color="inherit" display="block" underline="none" sx={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
                     About us
                   </Link>
-                  <Link href="#" color="inherit" display="block" underline="none" sx={{ marginBottom: '1.2rem', fontFamily: 'Roboto, sans-serif' }}>
+                  <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
                     Product
                   </Link>
-                  <Link href="#" color="inherit" display="block" underline="none" sx={{ marginBottom: '1.2rem', fontFamily: 'Roboto, sans-serif' }}>
+                  <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
                     Contact
                   </Link>
                 </Box>
               </Grid>
 
               <Grid item xs={12} sm={4}>
-                <Typography variant="subtitle2" sx={{ fontWeight: 'bold', marginBottom: '1.2rem', fontFamily: 'Roboto, sans-serif', fontSize: '1.5rem' }}>
+                <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: '1rem', fontSize: '1.5rem' }}>
                   Support
                 </Typography>
                 <Box>
-                  <Link href="#" color="inherit" display="block" underline="none" sx={{marginBottom: '1.2rem', fontFamily: 'Roboto, sans-serif' }}>
+                  <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
                     FAQ
                   </Link>
-                  <Link href="#" color="inherit" display="block" underline="none" sx={{marginBottom: '1.2rem', fontFamily: 'Roboto, sans-serif' }}>
+                  <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
                     Privacy Policy
                   </Link>
-                  <Link href="#" color="inherit" display="block" underline="none" sx={{ marginBottom: '1.2rem', fontFamily: 'Roboto, sans-serif' }}>
+                  <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
                     Terms of Service
                   </Link>
                 </Box>
               </Grid>
 
               <Grid item xs={12} sm={4}>
-                <Typography variant="subtitle2" sx={{ fontWeight: 'bold',marginBottom: '1.2rem', fontFamily: 'Roboto, sans-serif', fontSize: '1.5rem' }}>
+                <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: '1rem', fontSize: '1.5rem' }}>
                   Our Work
                 </Typography>
                 <Box>
-                  <Link href="#" color="inherit" display="block" underline="none" sx={{ marginBottom: '1.2rem', fontFamily: 'Roboto, sans-serif' }}>
+                  <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
                     Pricing
                   </Link>
-                  <Link href="#" color="inherit" display="block" underline="none" sx={{marginBottom: '1.2rem', fontFamily: 'Roboto, sans-serif' }}>
+                  <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
                     Customer
                   </Link>
                 </Box>
@@ -90,7 +87,7 @@ const Footer = () => {
             <Typography variant="body2" sx={{ marginTop: '1rem', fontFamily: 'Roboto, sans-serif' }}>
               © 2025 ACACADHUB EDU TECH PRIVATE LIMITED.<br></br> All rights reserved.
             </Typography>
-            <Link href="#" color="inherit" sx={{ display: 'flex', alignItems: 'center', marginTop: '1rem', fontFamily: 'Roboto, sans-serif' }} underline="none">
+            <Link href="https://onesaz.com/sign-in" color="inherit" sx={{ display: 'flex', alignItems: 'center', marginTop: '1rem', fontSize: '1.2rem', fontWeight: 'bold' }} underline="none">
               → Log In
             </Link>
             <Box sx={{ marginTop: '1rem' }}>

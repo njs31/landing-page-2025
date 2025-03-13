@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { 
   Box, 
   Typography, 
@@ -38,9 +38,6 @@ const LMSFeaturesGrid = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
   const scrollContainerRef = useRef(null);
-  const sectionRef = useRef(null);
-  const [isScrollLocked, setIsScrollLocked] = useState(false);
-  const [lastCardVisible, setLastCardVisible] = useState(false);
 
   const getCardWidth = () => (isMobile ? 320 : isTablet ? 360 : 380);
   const getCardsGap = () => (isMobile ? 8 : 16);
@@ -53,169 +50,16 @@ const LMSFeaturesGrid = () => {
     { title: 'Secure login', iconColor: '#F3E5F5', textColor: '#BA68C8', description: 'Digital admission process, Easy form submission, Seamless admission tracking.', icon: <QuizOutlinedIcon fontSize="large" style={{ color: '#ba68c8' }} /> },
   ];
 
-  const maxScrollWidth = () => {
-    if (!scrollContainerRef.current) return 0;
-    const container = scrollContainerRef.current;
-    return container.scrollWidth - container.clientWidth;
-  };
-
-  // Function to check if the last card is fully visible
-  const isLastCardVisible = () => {
-    if (!scrollContainerRef.current) return false;
-    
-    const container = scrollContainerRef.current;
-    const scrollPosition = container.scrollLeft;
-    const containerWidth = container.clientWidth;
-    const scrollableWidth = container.scrollWidth;
-    
-    // Consider the last card visible when we've scrolled to at least 95% of the max scroll
-    return scrollPosition + containerWidth >= scrollableWidth * 0.95;
-  };
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-    let initialSectionTop = 0;
-    let sectionHeight = 0;
-    let releasePoint = 0;
-
-    // Function to handle horizontal scroll on card container
-    const handleHorizontalScroll = () => {
-      const isVisible = isLastCardVisible();
-      if (isVisible !== lastCardVisible) {
-        setLastCardVisible(isVisible);
-      }
-    };
-
-    // Add scroll event listener to the horizontal container
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.addEventListener('scroll', handleHorizontalScroll);
-    }
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const currentScrollY = window.scrollY;
-          const sectionRect = section.getBoundingClientRect();
-          
-          // First time we reach the section
-          if (!initialSectionTop && sectionRect.top <= 0) {
-            initialSectionTop = currentScrollY + sectionRect.top;
-            sectionHeight = sectionRect.height;
-            releasePoint = initialSectionTop + sectionHeight;
-          }
-          
-          if (initialSectionTop) {
-            // Calculate how far we've scrolled within the section
-            const scrollOffset = currentScrollY - initialSectionTop;
-            const totalScrollDistance = sectionHeight;
-            
-            // Determine if we should lock scrolling
-            if (scrollOffset >= 0 && !lastCardVisible) {
-              // Calculate normalized progress for horizontal scrolling (0 to 1)
-              const normalizedProgress = Math.max(0, Math.min(1, scrollOffset / totalScrollDistance));
-              
-              // Lock the section while horizontal scrolling is happening
-              if (!isScrollLocked) {
-                setIsScrollLocked(true);
-                // Apply fixed position
-                section.style.position = 'fixed';
-                section.style.top = '0';
-                section.style.left = '0';
-                section.style.width = '100%';
-                section.style.zIndex = '1';
-                
-                // Add placeholder to prevent layout shift
-                const placeholder = document.createElement('div');
-                placeholder.id = 'lms-section-placeholder';
-                placeholder.style.height = `${sectionHeight}px`;
-                section.parentNode.insertBefore(placeholder, section);
-              }
-              
-              // Update horizontal scroll based on vertical scroll progress
-              if (scrollContainerRef.current) {
-                const targetScrollLeft = normalizedProgress * maxScrollWidth();
-                scrollContainerRef.current.scrollLeft = targetScrollLeft;
-              }
-            } else if (lastCardVisible || scrollOffset > totalScrollDistance) {
-              // Last card is visible or we've scrolled past the section, release scroll lock
-              if (isScrollLocked) {
-                setIsScrollLocked(false);
-                
-                // Reset the section to its normal flow in the document
-                section.style.position = 'relative';
-                section.style.top = `${scrollOffset}px`;
-                
-                // Remove placeholder
-                const placeholder = document.getElementById('lms-section-placeholder');
-                if (placeholder) {
-                  placeholder.remove();
-                }
-                
-                // Adjust window scroll position to maintain visual continuity
-                if (!section.dataset.scrollAdjusted) {
-                  section.dataset.scrollAdjusted = 'true';
-                  // This ensures the visual position stays the same
-                  window.scrollTo({
-                    top: initialSectionTop + scrollOffset,
-                    behavior: 'auto'
-                  });
-                }
-              }
-            } else if (scrollOffset < 0) {
-              // Exiting at the top
-              if (isScrollLocked) {
-                setIsScrollLocked(false);
-                section.style.position = 'relative';
-                section.style.top = '0';
-                
-                // Remove placeholder
-                const placeholder = document.getElementById('lms-section-placeholder');
-                if (placeholder) placeholder.remove();
-                
-                // Reset the scroll adjustment flag
-                delete section.dataset.scrollAdjusted;
-              }
-            }
-          }
-          
-          lastScrollY = currentScrollY;
-          ticking = false;
-        });
-        
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    
-    // Initial setup
-    handleScroll();
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.removeEventListener('scroll', handleHorizontalScroll);
-      }
-      // Clean up when component unmounts
-      const placeholder = document.getElementById('lms-section-placeholder');
-      if (placeholder) placeholder.remove();
-    };
-  }, [isScrollLocked, lastCardVisible]);
-
   return (
     <Box 
-      ref={sectionRef}
       sx={{ 
-        borderBottom: '0.5px solid pink', 
+        borderTop: '1px solid pink', 
+        borderBottom: '1px solid pink', 
         bgcolor: '#1a2a42', 
         color: 'white', 
-        height: '100vh', // Always 100vh while locked
+        minHeight: '100vh', 
         py: 6, 
         px: { xs: 2, md: 3 },
-        overflow: 'hidden', // Prevent content overflow
-        transition: 'top 0.3s ease-out',
         position: 'relative'
       }}
     >  
@@ -283,10 +127,23 @@ const LMSFeaturesGrid = () => {
               overflowY: 'hidden',
               gap: getCardsGap(),
               pb: 2,
-              '&::-webkit-scrollbar': { display: 'none' },
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-              width: '100%'
+              width: '100%',
+              '&::-webkit-scrollbar': {
+                height: '8px',
+              },
+              '&::-webkit-scrollbar-track': {
+                background: 'rgba(255, 255, 255, 0.1)',
+                borderRadius: '4px',
+              },
+              '&::-webkit-scrollbar-thumb': {
+                background: '#4FC3F7',
+                borderRadius: '4px',
+                '&:hover': {
+                  background: '#29B6F6',
+                }
+              },
+              scrollbarWidth: 'thin',
+              scrollbarColor: '#4FC3F7 rgba(255, 255, 255, 0.1)'
             }}
           >
             {featureData.map((feature, index) => (

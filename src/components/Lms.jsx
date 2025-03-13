@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { 
   Box, 
   Typography, 
@@ -33,178 +33,43 @@ const IconBox = ({ color, children }) => (
   </Box>
 );
 
-const LMSFeaturesGrid = () => {
+const Lms = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
   const scrollContainerRef = useRef(null);
-  const sectionRef = useRef(null);
-  const [isScrollLocked, setIsScrollLocked] = useState(false);
-  const [lastCardVisible, setLastCardVisible] = useState(false);
 
   const getCardWidth = () => (isMobile ? 320 : isTablet ? 360 : 380);
   const getCardsGap = () => (isMobile ? 8 : 16);
-  
+
   const featureData = [
-    { title: 'Institute management', iconColor: '#E3F2FD', textColor: '#64B5F6', description: 'Automate enrollment, attendance, fees, exams, analysis. Optimize institute performance and resource use', icon: <VideocamOutlinedIcon fontSize="large" style={{ color: '#64b5f6' }} /> },
-    { title: 'Data management', iconColor: '#FCE4EC', textColor: '#EC407A', description: 'Easily record, backup, export data in CSV or XML format. Customize fields, manage student details, and save records for in-depth analysis', icon: <AnalyticsOutlinedIcon fontSize="large" style={{ color: '#ec407a' }} /> },
-    { title: 'Finance management', iconColor: '#F1F8E9', textColor: '#AED581', description: 'Simplifies fees collection, Automate Transactions and Provide In-depth Financial Reports', icon: <TouchAppOutlinedIcon fontSize="large" style={{ color: '#aed581' }} /> },
-    { title: 'Admission management', iconColor: '#FFF3E0', textColor: '#FFB74D', description: 'Digital admission process, Easy form submission, Seamless admission tracking', icon: <AssignmentOutlinedIcon fontSize="large" style={{ color: '#ffb74d' }} /> },
-    { title: 'Transport management', iconColor: '#F3E5F5', textColor: '#BA68C8', description: 'Enhance student safety, Tracking vehicle status and Collect transportation fees', icon: <QuizOutlinedIcon fontSize="large" style={{ color: '#ba68c8' }} /> },
-    { title: 'Inventory management', iconColor: '#F3E5F5', textColor: '#BA68C8', description: 'Manage Inventory, Maintain Supplier details and Generate a paperless invoice', icon: <QuizOutlinedIcon fontSize="large" style={{ color: '#ba68c8' }} /> }
+    { title: 'Secure Virtual Classes', iconColor: '#E3F2FD', textColor: '#64B5F6', description: 'Our solutions empower you to conduct online classes with ironclad security. You have full control over class access and participants', icon: <VideocamOutlinedIcon fontSize="large" style={{ color: '#64b5f6' }} /> },
+    { title: 'Quick Analysis', iconColor: '#FCE4EC', textColor: '#EC407A', description: 'We provides 14 types of analysis that teachers and students can dive into for insights that spark improvement', icon: <AnalyticsOutlinedIcon fontSize="large" style={{ color: '#ec407a' }} /> },
+    { title: 'Multiple Question Papers', iconColor: '#F1F8E9', textColor: '#AED581', description: 'Leverage our library to effortlessly create & customize multiple question papers tailored to your exact needs', icon: <TouchAppOutlinedIcon fontSize="large" style={{ color: '#aed581' }} /> },
+    { title: 'User friendly interface', iconColor: '#FFF3E0', textColor: '#FFB74D', description: 'Designed for both students and institutes, our easy-to-navigate interface ensures a seamless and straightforward learning experience.', icon: <AssignmentOutlinedIcon fontSize="large" style={{ color: '#ffb74d' }} /> },
+    { title: 'Test Creation', iconColor: '#F3E5F5', textColor: '#BA68C8', description: 'Our test creation tool lets students craft personalized papers aligned with their performance, fostering progress and improvement', icon: <QuizOutlinedIcon fontSize="large" style={{ color: '#ba68c8' }} /> },
   ];
-
-  const maxScrollWidth = () => {
-    if (!scrollContainerRef.current) return 0;
-    const container = scrollContainerRef.current;
-    return container.scrollWidth - container.clientWidth;
-  };
-
-  const isLastCardVisible = () => {
-    if (!scrollContainerRef.current) return false;
-    
-    const container = scrollContainerRef.current;
-    const scrollPosition = container.scrollLeft;
-    const containerWidth = container.clientWidth;
-    const scrollableWidth = container.scrollWidth;
-    
-    return scrollPosition + containerWidth >= scrollableWidth * 0.95;
-  };
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-    let initialSectionTop = 0;
-    let sectionHeight = 0;
-    let releasePoint = 0;
-
-    const handleHorizontalScroll = () => {
-      const isVisible = isLastCardVisible();
-      if (isVisible !== lastCardVisible) {
-        setLastCardVisible(isVisible);
-      }
-    };
-
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.addEventListener('scroll', handleHorizontalScroll);
-    }
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const currentScrollY = window.scrollY;
-          const sectionRect = section.getBoundingClientRect();
-          
-          if (!initialSectionTop && sectionRect.top <= 0) {
-            initialSectionTop = currentScrollY + sectionRect.top;
-            sectionHeight = sectionRect.height;
-            releasePoint = initialSectionTop + sectionHeight;
-          }
-          
-          if (initialSectionTop) {
-            const scrollOffset = currentScrollY - initialSectionTop;
-            const totalScrollDistance = sectionHeight;
-            
-            if (scrollOffset >= 0 && !lastCardVisible) {
-              const normalizedProgress = Math.max(0, Math.min(1, scrollOffset / totalScrollDistance));
-              
-              if (!isScrollLocked) {
-                setIsScrollLocked(true);
-                section.style.position = 'fixed';
-                section.style.top = '0';
-                section.style.left = '0';
-                section.style.width = '100%';
-                section.style.zIndex = '1';
-                
-                const placeholder = document.createElement('div');
-                placeholder.id = 'lms-section-placeholder';
-                placeholder.style.height = `${sectionHeight}px`;
-                section.parentNode.insertBefore(placeholder, section);
-              }
-              
-              if (scrollContainerRef.current) {
-                const targetScrollLeft = normalizedProgress * maxScrollWidth();
-                scrollContainerRef.current.scrollLeft = targetScrollLeft;
-              }
-            } else if (lastCardVisible || scrollOffset > totalScrollDistance) {
-              if (isScrollLocked) {
-                setIsScrollLocked(false);
-                
-                section.style.position = 'relative';
-                section.style.top = `${scrollOffset}px`;
-                
-                const placeholder = document.getElementById('lms-section-placeholder');
-                if (placeholder) {
-                  placeholder.remove();
-                }
-                
-                if (!section.dataset.scrollAdjusted) {
-                  section.dataset.scrollAdjusted = 'true';
-                  window.scrollTo({
-                    top: initialSectionTop + scrollOffset,
-                    behavior: 'auto'
-                  });
-                }
-              }
-            } else if (scrollOffset < 0) {
-              if (isScrollLocked) {
-                setIsScrollLocked(false);
-                section.style.position = 'relative';
-                section.style.top = '0';
-                
-                const placeholder = document.getElementById('lms-section-placeholder');
-                if (placeholder) placeholder.remove();
-                
-                delete section.dataset.scrollAdjusted;
-              }
-            }
-          }
-          
-          lastScrollY = currentScrollY;
-          ticking = false;
-        });
-        
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    
-    handleScroll();
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.removeEventListener('scroll', handleHorizontalScroll);
-      }
-      const placeholder = document.getElementById('lms-section-placeholder');
-      if (placeholder) placeholder.remove();
-    };
-  }, [isScrollLocked, lastCardVisible]);
 
   return (
     <Box 
-      ref={sectionRef}
       sx={{ 
-        borderBottom: '0.5px solid pink', 
+        borderTop: '1px solid pink', 
+        borderBottom: '1px solid pink', 
         bgcolor: '#1a2a42', 
         color: 'white', 
-        height: '100vh',
         py: 6, 
         px: { xs: 2, md: 3 },
-        overflow: 'hidden',
-        transition: 'top 0.3s ease-out',
+        overflow: 'visible',
         position: 'relative'
       }}
     >  
-      <Container maxWidth="lg" sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      <Container maxWidth="lg" sx={{ display: 'flex', flexDirection: 'column' }}>
         <Box sx={{ mb: 5, textAlign: 'left' }}>
           <Typography variant="h3" fontWeight="500" sx={{ fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' } }}>
-          Optimize Operations with <Box component="span" sx={{ color: '#4FC3F7' }}>Onesaz</Box> ERP
+          Increased results with <Box component="span" sx={{ color: '#4FC3F7' }}>LMS</Box> features
           </Typography>
           <Typography variant="subtitle1" sx={{ opacity: 0.7, mb: 3, fontSize: { xs: '1rem', sm: '1.1rem', md: '1.2rem' } }}>
-          With Onesaz ERP, you're embracing a new era of education management
+          Run your school on most intelligent operating system
           </Typography>
 
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mt: 2 }}>
@@ -222,7 +87,8 @@ const LMSFeaturesGrid = () => {
                 fontSize: { xs: '0.9rem', sm: '1rem' }
               }}
             >
-12+ ERP features            </Button>
+              Empower Management Efficiency
+            </Button>
             <Button 
               variant="outlined" 
               startIcon={<FlagOutlinedIcon />}
@@ -237,20 +103,20 @@ const LMSFeaturesGrid = () => {
                 fontSize: { xs: '0.9rem', sm: '1rem' }
               }}
             >
-             Fully customizable
+              Enhance the Students Learning
             </Button>
           </Box>
         </Box>
 
         <Box 
           sx={{ 
-            flex: 1,
             position: 'relative', 
-            width: '100%', 
-            overflow: 'hidden',
+            width: '100%',
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            mb: 2
           }}
         >
           <Box
@@ -260,11 +126,26 @@ const LMSFeaturesGrid = () => {
               overflowX: 'auto',
               overflowY: 'hidden',
               gap: getCardsGap(),
-              pb: 2,
-              '&::-webkit-scrollbar': { display: 'none' },
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-              width: '100%'
+              width: '100%',
+              pb: 4, // Add padding at bottom for scrollbar
+              // Custom scrollbar styles
+              '&::-webkit-scrollbar': {
+                height: '12px',
+              },
+              '&::-webkit-scrollbar-track': {
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                borderRadius: '6px',
+              },
+              '&::-webkit-scrollbar-thumb': {
+                backgroundColor: '#4FC3F7',
+                borderRadius: '6px',
+                '&:hover': {
+                  backgroundColor: '#29B6F6',
+                },
+              },
+              // Firefox
+              scrollbarWidth: 'thin',
+              scrollbarColor: '#4FC3F7 rgba(255, 255, 255, 0.1)',
             }}
           >
             {featureData.map((feature, index) => (
@@ -318,4 +199,4 @@ const LMSFeaturesGrid = () => {
   );
 };
 
-export default LMSFeaturesGrid;
+export default Lms;

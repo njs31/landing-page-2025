@@ -8,6 +8,56 @@ import {
   Box,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { styled } from '@mui/system';
+import '@fontsource/roboto'; // Default font
+import '@fontsource/poppins'; // Additional font
+import '@fontsource/montserrat'; // Additional font
+
+const theme = createTheme({
+  typography: {
+    fontFamily: 'Poppins, Roboto, Montserrat, Arial, sans-serif',
+    h4: {
+      fontSize: '3rem', // Increased font size
+      fontWeight: 700,
+      '@media (max-width:600px)': {
+        fontSize: '2.5rem', // Increased font size for mobile
+      },
+    },
+    subtitle1: {
+      fontSize: '1.5rem', // Increased font size
+      fontWeight: 500,
+      '@media (max-width:600px)': {
+        fontSize: '1.25rem', // Increased font size for mobile
+      },
+    },
+    body1: {
+      fontSize: '1.25rem', // Increased font size
+      '@media (max-width:600px)': {
+        fontSize: '1.125rem', // Increased font size for mobile
+      },
+    },
+    body2: {
+      fontSize: '1.125rem', // Increased font size
+      '@media (max-width:600px)': {
+        fontSize: '1rem', // Increased font size for mobile
+      },
+    },
+  },
+});
+
+const StyledAccordion = styled(Accordion)(({ theme }) => ({
+  backgroundColor: '#2D3748',
+  color: 'white',
+  marginBottom: '1rem',
+  '& .MuiAccordionSummary-content': {
+    color: 'white',
+  },
+  '& .MuiAccordionDetails-root': {
+    backgroundColor: '#c2fff8',
+    color: 'black',
+  },
+}));
 
 const FAQ = () => {
   const [expanded, setExpanded] = useState(false);
@@ -45,47 +95,37 @@ const FAQ = () => {
   ];
 
   return (
-    <Box sx={{  backgroundColor: '#1E293B', color: 'white', padding: '3rem 0' }}>
-      <Container sx={{borderBottom:'0.5 px solid white',}} maxWidth="md">
-        <Typography variant="h4" align="center" gutterBottom>
-          Frequently asked questions
-        </Typography>
-        <Typography variant="body2" align="center" gutterBottom>
-          Here are few questions we get regularly from the users
-        </Typography>
+    <ThemeProvider theme={theme}>
+      <Box sx={{ backgroundColor: '#1E293B', color: 'white', padding: '3rem 0' }}>
+        <Container sx={{ borderBottom: '0.5px solid white', maxWidth: 'lg' }}>
+          <Typography variant="h4" align="center" gutterBottom>
+            Frequently Asked Questions
+          </Typography>
+          <Typography variant="body2" align="center" gutterBottom>
+            Here are a few questions we get regularly from the users
+          </Typography>
 
-        {faqData.map((item, index) => (
-          <Accordion
-            key={index}
-            expanded={expanded === `panel${index}`}
-            onChange={handleChange(`panel${index}`)}
-            sx={{
-              backgroundColor: '#2D3748',
-              color: 'white',
-              marginBottom: '1rem',
-              '& .MuiAccordionSummary-content': {
-                color: 'white', // Set the color of the summary content to white
-              },
-              '& .MuiAccordionDetails-root': {
-                backgroundColor: '#c2fff8', // Set the background color of the details to #66ffcc
-                color: 'black', // Set the text color of the details to black
-              },
-            }}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon sx={{ color: 'white' }} />}
-              aria-controls={`panel${index}a-content`}
-              id={`panel${index}a-header`}
+          {faqData.map((item, index) => (
+            <StyledAccordion
+              key={index}
+              expanded={expanded === `panel${index}`}
+              onChange={handleChange(`panel${index}`)}
             >
-              <Typography variant="subtitle1">{item.question}</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography variant="body1">{item.answer}</Typography>
-            </AccordionDetails>
-          </Accordion>
-        ))}
-      </Container>
-    </Box>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon sx={{ color: 'white' }} />}
+                aria-controls={`panel${index}a-content`}
+                id={`panel${index}a-header`}
+              >
+                <Typography variant="subtitle1">{item.question}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography variant="body1">{item.answer}</Typography>
+              </AccordionDetails>
+            </StyledAccordion>
+          ))}
+        </Container>
+      </Box>
+    </ThemeProvider>
   );
 };
 
