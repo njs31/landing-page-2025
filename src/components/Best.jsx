@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Card,
-  CardContent,
   Typography,
   Grid,
   Box,
@@ -16,7 +15,7 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 import { styled } from "@mui/material/styles";
 
 // Styled Card for improved aesthetics
-const StyledCard = styled(Card)(({ theme }) => ({
+const StyledCard = styled(Card)(({ theme, accentColor }) => ({
   borderRadius: "16px",
   boxShadow: "0px 10px 25px rgba(0, 0, 0, 0.08)",
   transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
@@ -29,11 +28,22 @@ const StyledCard = styled(Card)(({ theme }) => ({
   backgroundColor: "white",
   position: "relative",
   overflow: "hidden",
-  height: "300px", // Increased card height
+  height: "400px",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
 }));
+
+// Content container to position above the geometric shapes
+const ContentContainer = styled(Box)({
+  position: "relative",
+  zIndex: 2,
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  height: "100%",
+  justifyContent: "center",
+});
 
 export default function FeatureCards() {
   const features = [
@@ -42,38 +52,207 @@ export default function FeatureCards() {
       title: "Customized Applications",
       description:
         "Our tech-savvy team listens to your needs, delivering fast, tailored solutions.",
+      accentColor: "#FF5722", // Orange
     },
     {
       icon: LockIcon,
       title: "4 Layer security",
       description:
         "Your data is guarded by 4 layers of protection, ensuring a hack-free environment. Notified whenever data is edited/damaged.",
+      accentColor: "#673AB7", // Deep Purple
     },
     {
       icon: CameraIcon,
       title: "OMR scan analysis",
       description:
         "Easily scan any OMR sheet with your mobile camera. We provide instant, comprehensive analysis with 14 detailed insights.",
+      accentColor: "#2196F3", // Blue
     },
     {
       icon: AutoGraphIcon,
       title: "Adaptive Learning",
       description:
         "Our system leverages advanced algorithms to analyze individual student performance and preferences.",
+      accentColor: "#4CAF50", // Green
     },
     {
       icon: SchoolIcon,
       title: "School operating system",
       description:
         "Our ERP solution seamlessly integrates all aspects of education management, from enrollment to assessments, into a unified platform.",
+      accentColor: "#9C27B0", // Purple
     },
     {
       icon: MenuBookIcon,
       title: "Best content",
       description:
         "Explore Onesaz's question bank with 300,000+ questions, subject-wise, topics, and subtopics – all expertly organized to save your time & energy.",
+      accentColor: "#E91E63", // Pink
     },
   ];
+
+  // Generate random geometric shapes for each card with reduced opacity
+  const renderGeometricShapes = (accentColor) => {
+    const shapes = [];
+    const totalShapes = 10;
+    
+    for (let i = 0; i < totalShapes; i++) {
+      // Randomly determine shape type
+      const shapeType = Math.floor(Math.random() * 4); // 0: circle, 1: square, 2: triangle, 3: rectangle
+      
+      // Random position
+      const top = `${Math.random() * 100}%`;
+      const left = `${Math.random() * 100}%`;
+      
+      // Random size (based on shape type)
+      const size = 10 + Math.random() * 30;
+      
+      // Random rotation
+      const rotation = Math.random() * 360;
+      
+      // Reduced random opacity (reduced from 0.1-0.3 to 0.05-0.15)
+      const opacity = 0.05 + Math.random() * 0.1;
+      
+      // Common styles
+      const commonStyles = {
+        position: "absolute",
+        top,
+        left,
+        transform: `rotate(${rotation}deg)`,
+        opacity,
+        background: accentColor,
+        zIndex: 1,
+      };
+      
+      switch (shapeType) {
+        case 0: // Circle
+          shapes.push(
+            <Box
+              key={`circle-${i}`}
+              sx={{
+                ...commonStyles,
+                width: `${size}px`,
+                height: `${size}px`,
+                borderRadius: "50%",
+              }}
+            />
+          );
+          break;
+        case 1: // Square
+          shapes.push(
+            <Box
+              key={`square-${i}`}
+              sx={{
+                ...commonStyles,
+                width: `${size}px`,
+                height: `${size}px`,
+              }}
+            />
+          );
+          break;
+        case 2: // Triangle (CSS triangle)
+          shapes.push(
+            <Box
+              key={`triangle-${i}`}
+              sx={{
+                ...commonStyles,
+                width: 0,
+                height: 0,
+                backgroundColor: "transparent",
+                borderLeft: `${size / 2}px solid transparent`,
+                borderRight: `${size / 2}px solid transparent`,
+                borderBottom: `${size}px solid ${accentColor}`,
+              }}
+            />
+          );
+          break;
+        case 3: // Rectangle
+          shapes.push(
+            <Box
+              key={`rectangle-${i}`}
+              sx={{
+                ...commonStyles,
+                width: `${size * 1.5}px`,
+                height: `${size}px`,
+              }}
+            />
+          );
+          break;
+        default:
+          break;
+      }
+    }
+    
+    // Add a few special shapes for visual interest with reduced opacity
+    // Large blurred circle in a corner (reduced from 0.1 to 0.05)
+    shapes.push(
+      <Box
+        key="large-circle"
+        sx={{
+          position: "absolute",
+          bottom: "-5%",
+          right: "-5%",
+          width: "100px",
+          height: "100px",
+          borderRadius: "50%",
+          background: accentColor,
+          opacity: 0.05,
+          filter: "blur(20px)",
+          zIndex: 1,
+        }}
+      />
+    );
+    
+    // Small shapes cluster (reduced from 0.6 to 0.3)
+    shapes.push(
+      <Box
+        key="dot-cluster"
+        sx={{
+          position: "absolute",
+          top: "15%",
+          left: "10%",
+          zIndex: 1,
+        }}
+      >
+        <Box
+          sx={{
+            width: "8px",
+            height: "8px",
+            borderRadius: "50%",
+            background: accentColor,
+            opacity: 0.3,
+            position: "absolute",
+          }}
+        />
+        <Box
+          sx={{
+            width: "4px",
+            height: "4px",
+            borderRadius: "50%",
+            background: accentColor,
+            opacity: 0.3,
+            position: "absolute",
+            top: "10px",
+            left: "10px",
+          }}
+        />
+        <Box
+          sx={{
+            width: "6px",
+            height: "6px",
+            borderRadius: "50%",
+            background: accentColor,
+            opacity: 0.3,
+            position: "absolute",
+            top: "8px",
+            left: "-5px",
+          }}
+        />
+      </Box>
+    );
+    
+    return shapes;
+  };
 
   return (
     <Box
@@ -81,8 +260,9 @@ export default function FeatureCards() {
         backgroundColor: "#F8F9FC",
         minHeight: "100vh",
         py: 8,
-        px: { xs: 2, sm: 3, md: 4 }, // Responsive padding
+        px: { xs: 2, sm: 3, md: 4 },
         position: "relative",
+        overflowY: "auto",
       }}
     >
       {/* Title */}
@@ -91,15 +271,16 @@ export default function FeatureCards() {
           variant="h4"
           fontWeight="bold"
           color="#2D3B6F"
-          sx={{ display: "inline-block", fontFamily: 'Montserrat, sans-serif' }} // Attractive Font
+          sx={{ display: "inline-block", fontFamily: "Montserrat, sans-serif" }}
         >
-          Why our product is the{"  "}
+          Why our product is the{"   "}
         </Typography>
+
         <Typography
           variant="h4"
           fontWeight="bold"
           color="#00D2C6"
-          sx={{ display: "inline-block", fontFamily: 'Montserrat, sans-serif' }} // Attractive Font
+          sx={{ display: "inline-block", fontFamily: "Montserrat, sans-serif" }}
         >
           best
         </Typography>
@@ -133,50 +314,81 @@ export default function FeatureCards() {
       <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="center">
         {features.map((feature, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <StyledCard>
-              {/* Corner Decorative Element */}
-              <Box
-                sx={{
-                  position: "absolute",
-                  top: 0,
-                  right: 0,
-                  width: "50px",
-                  height: "50px",
-                  background: "url(/corner-pattern.svg) no-repeat center",
-                  backgroundSize: "contain",
-                  opacity: 0.2,
-                }}
-              />
+            <StyledCard accentColor={feature.accentColor}>
+              {/* Geometric shapes with decreased opacity */}
+              {renderGeometricShapes(feature.accentColor)}
+              
+              <ContentContainer>
+                {/* Icon with Glowing Effect */}
+                <Box
+                  sx={{
+                    width: 70,
+                    height: 70,
+                    borderRadius: "50%",
+                    bgcolor: "white",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    mx: "auto",
+                    mb: 3,
+                    boxShadow: `0 0 20px rgba(${parseInt(feature.accentColor.slice(1, 3), 16)}, ${parseInt(feature.accentColor.slice(3, 5), 16)}, ${parseInt(feature.accentColor.slice(5, 7), 16)}, 0.2)`, // Reduced shadow opacity from 0.3 to 0.2
+                    border: `2px solid ${feature.accentColor}`,
+                    position: "relative",
+                    zIndex: 3,
+                  }}
+                >
+                  <SvgIcon
+                    component={feature.icon}
+                    fontSize="large"
+                    sx={{
+                      fontSize: "2.5rem",
+                      color: feature.accentColor,
+                    }}
+                  />
+                </Box>
 
-              {/* Icon with Background Circle */}
-              <Box
-                sx={{
-                  width: 60, // Increased size
-                  height: 60, // Increased size
-                  borderRadius: "50%",
-                  bgcolor: "#F8F9FC",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  mx: "auto",
-                  mb: 2,
-                }}
-              >
-                <SvgIcon component={feature.icon} fontSize="large" color="primary" sx={{fontSize : '2.5rem'}}/>
-              </Box>
-
-              {/* Card Content */}
-              <Typography
-                variant="h6"
-                fontWeight="bold"
-                color="primary"
-                sx={{ mb: 1, fontSize: '1.3rem', fontFamily: 'Montserrat, sans-serif' }} // Increased font size and attractive font
-              >
-                {feature.title}
-              </Typography>
-              <Typography variant="body2" color="#6B7AB7" sx={{fontSize:'1.1rem', fontFamily: 'Montserrat, sans-serif'}}>
-                {feature.description}
-              </Typography>
+                {/* Card Content with updated typography */}
+                <Typography
+                  variant="h6"
+                  sx={{
+                    mb: 2,
+                    fontSize: "1.6rem",
+                    fontWeight: 800,
+                    fontFamily: "Montserrat, sans-serif",
+                    position: "relative",
+                    color: "#2D3B6F",
+                    "&::after": {
+                      content: '""',
+                      position: "absolute",
+                      bottom: "-8px",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      width: "50px",
+                      height: "4px",
+                      backgroundColor: feature.accentColor,
+                      borderRadius: "10px",
+                    },
+                    letterSpacing: "0.5px",
+                  }}
+                >
+                  {feature.title}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontSize: "1.25rem",
+                    fontFamily: "Montserrat, sans-serif",
+                    mt: 2,
+                    position: "relative",
+                    zIndex: 3,
+                    color: "#000000",
+                    fontWeight: 500,
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {feature.description}
+                </Typography>
+              </ContentContainer>
             </StyledCard>
           </Grid>
         ))}

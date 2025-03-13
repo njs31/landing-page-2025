@@ -100,7 +100,13 @@ const StudentPortal = () => {
                 Elevate your learning journey now!
               </Typography>
               
-              <StyledButton size="large">
+              <StyledButton
+                size="large"
+                component="a"
+                href="https://api.whatsapp.com/send/?phone=%2B919912340396&text=Hello%21+I%27m+interested+in+your+services.+Can+we+get+on+a+call%3F&type=phone_number&app_absent=0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Explore Portal
               </StyledButton>
             </Box>

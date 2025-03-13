@@ -2,10 +2,10 @@ import React from 'react';
 import android from '../assets/lapmo/android.png';
 import apple from '../assets/lapmo/apple.png';
 import laptop from '../assets/lapmo/lapmob.png';
-import { 
-  Container, 
-  Typography, 
-  Box, 
+import {
+  Container,
+  Typography,
+  Box,
   useMediaQuery,
   useTheme
 } from '@mui/material';
@@ -13,10 +13,9 @@ import { styled } from '@mui/system';
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   backgroundColor: '#f8f9fa',
-  padding: theme.spacing(2, 2), // Reduced top padding
+  padding: theme.spacing(1, 1), // Reduced top padding
   textAlign: 'center',
-  minHeight: '100vh',
-  minWidth: '100vw',
+  minHeight: 'auto', // Changed from 100vh to auto
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'flex-start', // Changed to start
@@ -33,6 +32,7 @@ const StyledLaptop = styled('img')(({ theme }) => ({
     maxWidth: '100%', // Full width on mobile screens
   },
 }));
+
 const StoreBadge = styled('img')(({ theme }) => ({
   height: '60px',
   margin: '0 15px',
@@ -45,51 +45,51 @@ const StoreBadge = styled('img')(({ theme }) => ({
 const Appd = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
+  
   return (
     <StyledContainer maxWidth="md">
       <Box sx={{ marginTop: theme.spacing(4) }}>
-        <Typography 
-          variant={isMobile ? "h5" : "h2"} 
-          component="h1" 
-          gutterBottom 
-          fontWeight={700} 
+        <Typography
+          variant={isMobile ? "h5" : "h2"}
+          component="h1"
+          gutterBottom
+          fontWeight={700}
           sx={{ position: 'relative', zIndex: 1 }}
         >
           Enjoy a seamless experience with our
         </Typography>
-        <Typography 
-          variant={isMobile ? "h5" : "h2"} 
-          component="h1" 
-          gutterBottom 
-          fontWeight={700} 
+        <Typography
+          variant={isMobile ? "h5" : "h2"}
+          component="h1"
+          gutterBottom
+          fontWeight={700}
           sx={{ color: 'red', position: 'relative', zIndex: 1 }}
         >
           Simplified app
         </Typography>
-        <Typography 
-          variant={isMobile ? "body1" : "h4"} 
-          gutterBottom 
-          fontWeight={500} 
+        <Typography
+          variant={isMobile ? "body1" : "h4"}
+          gutterBottom
+          fontWeight={500}
           sx={{ position: 'relative', zIndex: 1 }}
         >
           Watch the live classes anytime and anywhere
         </Typography>
       </Box>
-
-      <Box 
-        display="flex" 
-        justifyContent="center" 
-        alignItems="center" 
-        flexDirection="column" 
-        sx={{ position: 'relative', zIndex: 1, flexGrow: 1 }} // Added flexGrow to push content down
+      
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        sx={{ position: 'relative', zIndex: 1 }}
       >
-        <StyledLaptop src={laptop} alt="Laptop" /> 
+        <StyledLaptop src={laptop} alt="Laptop" />
       </Box>
-
-      <Box 
-        display="flex" 
-        justifyContent="center" 
+      
+      <Box
+        display="flex"
+        justifyContent="center"
         marginBottom={theme.spacing(4)} // Added bottom margin
         sx={{ position: 'relative', zIndex: 1 }}
       >

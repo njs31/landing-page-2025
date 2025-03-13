@@ -14,7 +14,6 @@ const StyledContainer = styled(Container)(({ theme }) => ({
   paddingTop: theme.spacing(3),
   paddingBottom: theme.spacing(4),
   position: 'relative',
-  height: '100vh',
   width: '100vw',
   display: 'flex',
   flexDirection: 'column',
@@ -66,7 +65,8 @@ const DashboardImage = styled('img')(({ theme }) => ({
   objectFit: 'contain',
 }));
 
-const Circle = styled('div')(({ theme, size, top, left, color }) => ({
+// Geometric shapes
+const Circle = styled('div')(({ size, top, left, color, opacity }) => ({
   position: 'absolute',
   width: size,
   height: size,
@@ -74,6 +74,45 @@ const Circle = styled('div')(({ theme, size, top, left, color }) => ({
   backgroundColor: color,
   top: top,
   left: left,
+  opacity: opacity,
+  zIndex: -1,
+}));
+
+const Square = styled('div')(({ size, top, left, color, opacity, rotation }) => ({
+  position: 'absolute',
+  width: size,
+  height: size,
+  backgroundColor: color,
+  top: top,
+  left: left,
+  opacity: opacity,
+  transform: `rotate(${rotation}deg)`,
+  zIndex: -1,
+}));
+
+const Triangle = styled('div')(({ size, top, left, color, opacity, rotation }) => ({
+  position: 'absolute',
+  width: 0,
+  height: 0,
+  borderLeft: `${size/2}px solid transparent`,
+  borderRight: `${size/2}px solid transparent`,
+  borderBottom: `${size}px solid ${color}`,
+  top: top,
+  left: left,
+  opacity: opacity,
+  transform: `rotate(${rotation}deg)`,
+  zIndex: -1,
+}));
+
+const Diamond = styled('div')(({ size, top, left, color, opacity }) => ({
+  position: 'absolute',
+  width: size,
+  height: size,
+  backgroundColor: color,
+  top: top,
+  left: left,
+  opacity: opacity,
+  transform: 'rotate(45deg)',
   zIndex: -1,
 }));
 
@@ -95,15 +134,27 @@ const DashboardSolutions = () => {
 
   return (
     <StyledContainer>
+      {/* Background geometric shapes */}
+      <Circle size="150px" top="5%" left="5%" color="#25c9d0" opacity={0.1} />
+      <Circle size="80px" top="70%" left="15%" color="#FF9800" opacity={0.15} />
+      <Circle size="120px" top="40%" left="85%" color="#9C27B0" opacity={0.08} />
+      
+      <Square size="100px" top="15%" left="80%" color="#4CAF50" opacity={0.12} rotation={15} />
+      <Square size="70px" top="60%" left="75%" color="#FF5722" opacity={0.1} rotation={30} />
+      
+      <Triangle size="120px" top="25%" left="30%" color="#3F51B5" opacity={0.08} rotation={180} />
+      <Triangle size="90px" top="65%" left="40%" color="#E91E63" opacity={0.1} rotation={45} />
+      
+      <Diamond size="100px" top="10%" left="60%" color="#FFEB3B" opacity={0.1} />
+      <Diamond size="80px" top="80%" left="5%" color="#00BCD4" opacity={0.12} />
+
       <Box>
         <DashboardHeader variant={isMobile ? 'h5' : 'h4'}>
           Our Solutions that will Blow Your Mind
         </DashboardHeader>
-
         <DashboardSubheader variant="body2">
           Vital KPIs, Real-time Updates, Customizable Dashlets
         </DashboardSubheader>
-
         <Box
           sx={{
             display: 'flex',
@@ -123,7 +174,6 @@ const DashboardSolutions = () => {
             </TabButton>
           ))}
         </Box>
-
         <Paper
           elevation={0}
           sx={{
@@ -140,28 +190,6 @@ const DashboardSolutions = () => {
               alt={`${activeTab} dashboard`}
             />
           </Box>
-
-          {/* Increased Frequency of Circles */}
-          <Circle size="8px" top="5%" left="10%" color="#25c9d0" />
-          <Circle size="10px" top="15%" left="20%" color="#25c9d0" />
-          <Circle size="6px" top="25%" left="5%" color="#25c9d0" />
-          <Circle size="12px" top="35%" left="30%" color="#25c9d0" />
-          <Circle size="8px" top="45%" left="15%" color="#25c9d0" />
-          <Circle size="14px" top="55%" left="40%" color="#25c9d0" />
-          <Circle size="10px" top="65%" left="25%" color="#25c9d0" />
-          <Circle size="7px" top="75%" left="50%" color="#25c9d0" />
-          <Circle size="9px" top="85%" left="35%" color="#25c9d0" />
-          <Circle size="5px" top="95%" left="60%" color="#25c9d0" />
-
-          <Circle size="11px" top="10%" left="70%" color="#25c9d0" />
-          <Circle size="9px" top="20%" left="80%" color="#25c9d0" />
-          <Circle size="13px" top="30%" left="90%" color="#25c9d0" />
-          <Circle size="7px" top="40%" left="65%" color="#25c9d0" />
-          <Circle size="15px" top="50%" left="75%" color="#25c9d0" />
-          <Circle size="6px" top="60%" left="85%" color="#25c9d0" />
-          <Circle size="12px" top="70%" left="95%" color="#25c9d0" />
-          <Circle size="8px" top="80%" left="70%" color="#25c9d0" />
-          <Circle size="14px" top="90%" left="80%" color="#25c9d0" />
         </Paper>
       </Box>
     </StyledContainer>

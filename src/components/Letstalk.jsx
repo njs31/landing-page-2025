@@ -12,9 +12,34 @@ const LetsTalk = () => {
         px: { xs: 2, md: 12 },
         py: 10,
         bgcolor: "rgba(224, 247, 250, 0.4)",
-        textAlign: "center"
+        textAlign: "center",
+        width: 'auto', // Ensure width is only as much as needed
       }}
     >
+      <Grid item xs={12} sx={{ textAlign: 'left' }}>
+        <Typography
+          variant="h2" // Increased font size
+          fontWeight="500"
+          sx={{ 
+            color: "#0288d1", 
+            fontSize: { xs: "2.5rem", md: "3rem" }, // Increased font size
+            mb: 2
+          }}
+        >
+          Let's Talk
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{ 
+            color: "#555", 
+            fontSize: { xs: "1.2rem", md: "1.4rem" }, // Increased font size
+            mb: 4
+          }}
+        >
+          If you have any questions about the product or are confused about which plan to select, contact us.
+        </Typography>
+      </Grid>
+
       <Grid item xs={12} md={6}>
         <Box 
           sx={{ 
@@ -206,7 +231,8 @@ const LetsTalk = () => {
               overflow: "hidden",
               borderRadius: 3,
               boxShadow: "0 4px 20px rgba(0, 0, 0, 0.06)",
-              position: "relative"
+              position: "relative",
+              minHeight: { xs: "300px", md: "400px" } // Ensure minimum height for mobile
             }}
           >
             <iframe
@@ -220,7 +246,7 @@ const LetsTalk = () => {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                minHeight: "300px"
+                minHeight: "300px" // Ensure minimum height for mobile
               }}
               allowFullScreen=""
               loading="lazy"
