@@ -93,7 +93,7 @@ const Appd = () => {
         marginBottom={theme.spacing(4)} // Added bottom margin
         sx={{ position: 'relative', zIndex: 1 }}
       >
-        <a href="https://play.google.com/store/apps/details?id=com.onesaz.studentapp&hl=en_IN" target="_blank" rel="noopener noreferrer">
+        <a href="https://play.google.com/store/apps/developer?id=onesaz+developer&hl=en_IN" target="_blank" rel="noopener noreferrer">
           <StoreBadge src={android} alt="Google Play" />
         </a>
         <a href="https://apps.apple.com/in/developer/onesaz/id1713076053" target="_blank" rel="noopener noreferrer">
