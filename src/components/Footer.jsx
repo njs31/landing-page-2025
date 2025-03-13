@@ -1,12 +1,10 @@
 import React from 'react';
-import { Box, Container, Grid, Typography, Link, IconButton, useMediaQuery, useTheme } from '@mui/material';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
+import { Box, Container, Grid, Typography, Link, IconButton, Button, useMediaQuery, useTheme } from '@mui/material';
 import InstagramIcon from '@mui/icons-material/Instagram';
 
 const Footer = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // Check if the screen is mobile
 
   return (
     <Box
@@ -15,95 +13,98 @@ const Footer = () => {
         color: 'white',
         padding: '3rem 0',
         position: 'relative',
+        fontFamily: 'Roboto, sans-serif',
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={4} justifyContent="space-between">
-          <Grid item xs={12} md={3}>
-            <Typography variant="h4" component="div" sx={{ fontWeight: 'bold', fontFamily: 'Roboto, sans-serif' }}>
+        <Grid container spacing={4} direction={isMobile ? 'column' : 'row'} justifyContent={isMobile ? 'flex-start' : 'center'}>
+          {/* Onesaz Information */}
+          <Grid item xs={12} md={4} sx={{ textAlign: isMobile ? 'left' : 'center' }}>
+            <Typography variant="h4" component="div" sx={{ fontWeight: 'bold', fontFamily: 'Montserrat, sans-serif' }}>
               Onesaz
             </Typography>
-            <Typography variant="body1" sx={{ marginTop: '1rem', fontFamily: 'Roboto, sans-serif' }}>
-              Onesaz - where both LMS and ERP come together in a fantastic fusion. Let's simplify education, together!
-            </Typography>
-            <Typography variant="body1" sx={{ marginTop: '1rem', fontFamily: 'Roboto, sans-serif' }}>
-              Suvarna Habitat, Jai Hind Gandhi Rd, Cyber Hills Colony, VIP Hills, Jaihind Enclave, Madhapur, Hyderabad, Telangana 500081
+            <Typography variant="body1" sx={{ marginTop: '1rem', lineHeight: '1.6' }}>
+              Suvarna Habitat, Jai Hind Gandhi Rd, Cyber Hills Colony, VIP Hills, Jaihind Enclave, Madhapur,
+              Hyderabad, Telangana 500081
             </Typography>
           </Grid>
 
-          <Grid item xs={12} md={6}>
-            <Grid container spacing={2} justifyContent="space-around">
-              <Grid item xs={12} sm={4}>
-                <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: '1rem', fontSize: '1.5rem' }}>
-                  Company
-                </Typography>
-                <Box>
-                  <Link href="https://onesaz.com/about-us" color="inherit" display="block" underline="none" sx={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-                    About us
-                  </Link>
-                  <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-                    Product
-                  </Link>
-                  <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-                    Contact
-                  </Link>
-                </Box>
-              </Grid>
-
-              <Grid item xs={12} sm={4}>
-                <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: '1rem', fontSize: '1.5rem' }}>
-                  Support
-                </Typography>
-                <Box>
-                  <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-                    FAQ
-                  </Link>
-                  <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-                    Privacy Policy
-                  </Link>
-                  <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-                    Terms of Service
-                  </Link>
-                </Box>
-              </Grid>
-
-              <Grid item xs={12} sm={4}>
-                <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: '1rem', fontSize: '1.5rem' }}>
-                  Our Work
-                </Typography>
-                <Box>
-                  <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-                    Pricing
-                  </Link>
-                  <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-                    Customer
-                  </Link>
-                </Box>
-              </Grid>
-            </Grid>
+          {/* Company Links */}
+          <Grid item xs={12} md={4} sx={{ textAlign: isMobile ? 'left' : 'center' }}>
+            <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: '1rem', fontSize: '1.3rem', fontFamily: 'Poppins, sans-serif' }}>
+              Company
+            </Typography>
+            <Box>
+              <Link href="https://onesaz.com/about-us" color="inherit" display="block" underline="none" sx={{ fontSize: '1rem', marginBottom: '0.8rem', fontWeight: 500 }}>
+                About us
+              </Link>
+              <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1rem', marginBottom: '0.8rem', fontWeight: 500 }}>
+                Product
+              </Link>
+              <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1rem', marginBottom: '0.8rem', fontWeight: 500 }}>
+                Contact
+              </Link>
+            </Box>
           </Grid>
 
-          <Grid item xs={12} md={3}>
-            <Typography variant="body2" sx={{ marginTop: '1rem', fontFamily: 'Roboto, sans-serif' }}>
-              © 2025 ACACADHUB EDU TECH PRIVATE LIMITED.<br></br> All rights reserved.
+          {/* Support Links */}
+          <Grid item xs={12} md={4} sx={{ textAlign: isMobile ? 'left' : 'center' }}>
+            <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: '1rem', fontSize: '1.3rem', fontFamily: 'Poppins, sans-serif' }}>
+              Support
             </Typography>
-            <Link href="https://onesaz.com/sign-in" color="inherit" sx={{ display: 'flex', alignItems: 'center', marginTop: '1rem', fontSize: '1.2rem', fontWeight: 'bold' }} underline="none">
-              → Log In
-            </Link>
-            <Box sx={{ marginTop: '1rem' }}>
-              <IconButton color="inherit" aria-label="facebook">
-                <FacebookIcon />
-              </IconButton>
-              <IconButton color="inherit" aria-label="twitter">
-                <TwitterIcon />
-              </IconButton>
-              <IconButton color="inherit" aria-label="instagram">
-                <InstagramIcon />
-              </IconButton>
+            <Box>
+              <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1rem', marginBottom: '0.8rem', fontWeight: 500 }}>
+                FAQ
+              </Link>
+              <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1rem', marginBottom: '0.8rem', fontWeight: 500 }}>
+                Privacy Policy
+              </Link>
+              <Link href="#" color="inherit" display="block" underline="none" sx={{ fontSize: '1rem', marginBottom: '0.8rem', fontWeight: 500 }}>
+                Terms of Service
+              </Link>
             </Box>
           </Grid>
         </Grid>
+
+        {/* Login Button and Instagram Icon */}
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: isMobile ? 'column' : 'row',
+            alignItems: 'center',
+            justifyContent: isMobile ? 'flex-start' : 'center',
+            marginTop: '2rem',
+          }}
+        >
+          <Button
+            variant="contained"
+            href="https://onesaz.com/sign-in"
+            sx={{
+              backgroundColor: '#87CEEB', // Sky blue color
+              color: '#000', // Black font color
+              textTransform: 'none',
+              fontSize: '1rem',
+              fontWeight: 500,
+              marginRight: isMobile ? 0 : '1rem',
+              marginBottom: isMobile ? '1rem' : 0,
+            }}
+          >
+            Log In
+          </Button>
+          <IconButton color="inherit" aria-label="instagram" href="https://www.instagram.com/onesazlearning/" target="_blank">
+            <InstagramIcon />
+          </IconButton>
+        </Box>
       </Container>
+
+      {/* Copyright Section */}
+      <Box sx={{ textAlign: 'center', mt: 'auto', paddingTop: '2rem' }}>
+        <Typography variant="body2">
+          &copy; 2025 ACACADHUB EDU TECH PRIVATE LIMITED.<br /> All rights reserved.
+        </Typography>
+      </Box>
     </Box>
   );
 };

@@ -23,10 +23,21 @@ const Navbar = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const navLinks = ["ERP", "LMS", "Fee Plan"];
+  const navLinks = ["ERP", "LMS", "MODULES"];
 
   const handleLoginClick = () => {
     window.location.href = "https://onesaz.com/sign-in";
+  };
+
+  const handleTryForFreeClick = () => {
+    window.open(
+      "https://wa.me/+919912340396?text=Hello!%20I%27m%20interested%20in%20your%20services.%20Can%20we%20get%20on%20a%20call%3F",
+      "_blank"
+    );
+  };
+
+  const handleNavLinkClick = () => {
+    setMobileOpen(false);
   };
 
   return (
@@ -59,7 +70,13 @@ const Navbar = () => {
           </Typography>
         </Box>
 
-        <Box sx={{ display: { xs: "none", md: "flex" }, gap: "20px", alignItems: "center" }}>
+        <Box
+          sx={{
+            display: { xs: "none", md: "flex" },
+            gap: "20px",
+            alignItems: "center",
+          }}
+        >
           {navLinks.map((text) => (
             <ScrollLink
               key={text}
@@ -72,10 +89,10 @@ const Navbar = () => {
                 cursor: "pointer",
                 fontFamily: "Poppins, sans-serif",
                 fontWeight: "700",
-                fontSize: "1.2rem",
+                fontSize: "1.1rem",
               }}
             >
-              <Typography>{text}</Typography>
+              <Typography sx={{ fontSize: "inherit" }}>{text}</Typography>
             </ScrollLink>
           ))}
 
@@ -103,12 +120,17 @@ const Navbar = () => {
               fontSize: "1.1rem",
               fontFamily: "Poppins, sans-serif",
             }}
+            onClick={handleTryForFreeClick}
           >
             Try for Free
           </Button>
         </Box>
 
-        <IconButton edge="end" onClick={handleDrawerToggle} sx={{ display: { xs: "block", md: "none" } }}>
+        <IconButton
+          edge="end"
+          onClick={handleDrawerToggle}
+          sx={{ display: { xs: "block", md: "none" } }}
+        >
           <MenuIcon />
         </IconButton>
       </Toolbar>
@@ -126,12 +148,22 @@ const Navbar = () => {
                 smooth={true}
                 duration={500}
                 offset={-70}
-                style={{ color: "#333", cursor: "pointer", display: "block", width: "100%" }}
+                style={{
+                  color: "#333",
+                  cursor: "pointer",
+                  display: "block",
+                  width: "100%",
+                }}
+                onClick={handleNavLinkClick}
               >
                 <ListItem button>
                   <ListItemText
                     primary={text}
-                    sx={{ fontFamily: "Poppins, sans-serif", fontWeight: "700" }}
+                    sx={{
+                      fontFamily: "Poppins, sans-serif",
+                      fontWeight: "700",
+                      fontSize: "1.1rem",
+                    }}
                   />
                 </ListItem>
               </ScrollLink>
@@ -141,11 +173,19 @@ const Navbar = () => {
               <LoginIcon sx={{ marginRight: "10px" }} />
               <ListItemText
                 primary="Log In"
-                sx={{ fontFamily: "Poppins, sans-serif", fontWeight: "700" }}
+                sx={{
+                  fontFamily: "Poppins, sans-serif",
+                  fontWeight: "700",
+                  fontSize: "1.1rem",
+                }}
               />
             </ListItem>
 
-            <ListItem button sx={{ textAlign: "center" }}>
+            <ListItem
+              button
+              sx={{ textAlign: "center" }}
+              onClick={handleTryForFreeClick}
+            >
               <Button
                 variant="contained"
                 sx={{
