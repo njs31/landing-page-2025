@@ -13,6 +13,27 @@ import CameraIcon from "@mui/icons-material/Camera";
 import SchoolIcon from "@mui/icons-material/School";
 import AutoGraphIcon from "@mui/icons-material/AutoGraph";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
+import { styled } from "@mui/material/styles";
+
+// Styled Card for improved aesthetics
+const StyledCard = styled(Card)(({ theme }) => ({
+  borderRadius: "16px",
+  boxShadow: "0px 10px 25px rgba(0, 0, 0, 0.08)",
+  transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+  "&:hover": {
+    transform: "translateY(-8px)",
+    boxShadow: "0px 15px 35px rgba(0, 0, 0, 0.12)",
+  },
+  textAlign: "center",
+  padding: theme.spacing(4),
+  backgroundColor: "white",
+  position: "relative",
+  overflow: "hidden",
+  height: "300px", // Increased card height
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+}));
 
 export default function FeatureCards() {
   const features = [
@@ -60,7 +81,7 @@ export default function FeatureCards() {
         backgroundColor: "#F8F9FC",
         minHeight: "100vh",
         py: 8,
-        px: 2,
+        px: { xs: 2, sm: 3, md: 4 }, // Responsive padding
         position: "relative",
       }}
     >
@@ -70,15 +91,15 @@ export default function FeatureCards() {
           variant="h4"
           fontWeight="bold"
           color="#2D3B6F"
-          sx={{ display: "inline-block" }}
+          sx={{ display: "inline-block", fontFamily: 'Montserrat, sans-serif' }} // Attractive Font
         >
-          Why our product is the{" "}
+          Why our product is the{"  "}
         </Typography>
         <Typography
           variant="h4"
           fontWeight="bold"
           color="#00D2C6"
-          sx={{ display: "inline-block" }}
+          sx={{ display: "inline-block", fontFamily: 'Montserrat, sans-serif' }} // Attractive Font
         >
           best
         </Typography>
@@ -89,7 +110,7 @@ export default function FeatureCards() {
         sx={{
           position: "absolute",
           top: "10%",
-          right: "5%",
+          right: { xs: "5%", md: "10%" },
           width: 12,
           height: 12,
           backgroundColor: "#00D2C6",
@@ -100,7 +121,7 @@ export default function FeatureCards() {
         sx={{
           position: "absolute",
           bottom: "15%",
-          left: "5%",
+          left: { xs: "5%", md: "10%" },
           width: 12,
           height: 12,
           backgroundColor: "#00D2C6",
@@ -109,20 +130,10 @@ export default function FeatureCards() {
       />
 
       {/* Feature Cards */}
-      <Grid container spacing={4} justifyContent="center">
+      <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="center">
         {features.map((feature, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card
-              sx={{
-                borderRadius: 3,
-                boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.05)",
-                textAlign: "center",
-                p: 3,
-                backgroundColor: "white",
-                position: "relative",
-                overflow: "hidden",
-              }}
-            >
+            <StyledCard>
               {/* Corner Decorative Element */}
               <Box
                 sx={{
@@ -140,8 +151,8 @@ export default function FeatureCards() {
               {/* Icon with Background Circle */}
               <Box
                 sx={{
-                  width: 50,
-                  height: 50,
+                  width: 60, // Increased size
+                  height: 60, // Increased size
                   borderRadius: "50%",
                   bgcolor: "#F8F9FC",
                   display: "flex",
@@ -151,7 +162,7 @@ export default function FeatureCards() {
                   mb: 2,
                 }}
               >
-                <SvgIcon component={feature.icon} fontSize="large" color="primary" />
+                <SvgIcon component={feature.icon} fontSize="large" color="primary" sx={{fontSize : '2.5rem'}}/>
               </Box>
 
               {/* Card Content */}
@@ -159,14 +170,14 @@ export default function FeatureCards() {
                 variant="h6"
                 fontWeight="bold"
                 color="primary"
-                sx={{ mb: 1 }}
+                sx={{ mb: 1, fontSize: '1.3rem', fontFamily: 'Montserrat, sans-serif' }} // Increased font size and attractive font
               >
                 {feature.title}
               </Typography>
-              <Typography variant="body2" color="#6B7AB7">
+              <Typography variant="body2" color="#6B7AB7" sx={{fontSize:'1.1rem', fontFamily: 'Montserrat, sans-serif'}}>
                 {feature.description}
               </Typography>
-            </Card>
+            </StyledCard>
           </Grid>
         ))}
       </Grid>
