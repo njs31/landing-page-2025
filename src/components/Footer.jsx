@@ -4,7 +4,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 
 const Footer = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // Check if the screen is mobile
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <Box
@@ -19,9 +19,14 @@ const Footer = () => {
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={4} direction={isMobile ? 'column' : 'row'} justifyContent={isMobile ? 'flex-start' : 'center'}>
+        <Grid 
+          container 
+          spacing={4} 
+          direction={isMobile ? 'column' : 'row'}
+          justifyContent="center"
+        >
           {/* Onesaz Information */}
-          <Grid item xs={12} md={4} sx={{ textAlign: isMobile ? 'left' : 'center' }}>
+          <Grid item xs={12} md={4} sx={{ textAlign: 'left' }}>
             <Typography variant="h4" component="div" sx={{ fontWeight: 'bold', fontFamily: 'Montserrat, sans-serif' }}>
               Onesaz
             </Typography>
@@ -32,7 +37,7 @@ const Footer = () => {
           </Grid>
 
           {/* Company Links */}
-          <Grid item xs={12} md={4} sx={{ textAlign: isMobile ? 'left' : 'center' }}>
+          <Grid item xs={12} md={4} sx={{ textAlign: 'left' }}>
             <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: '1rem', fontSize: '1.3rem', fontFamily: 'Poppins, sans-serif' }}>
               Company
             </Typography>
@@ -50,7 +55,7 @@ const Footer = () => {
           </Grid>
 
           {/* Support Links */}
-          <Grid item xs={12} md={4} sx={{ textAlign: isMobile ? 'left' : 'center' }}>
+          <Grid item xs={12} md={4} sx={{ textAlign: 'left' }}>
             <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: '1rem', fontSize: '1.3rem', fontFamily: 'Poppins, sans-serif' }}>
               Support
             </Typography>
@@ -73,8 +78,8 @@ const Footer = () => {
           sx={{
             display: 'flex',
             flexDirection: isMobile ? 'column' : 'row',
-            alignItems: 'center',
-            justifyContent: isMobile ? 'flex-start' : 'center',
+            alignItems: 'flex-start',
+            justifyContent: 'center',
             marginTop: '2rem',
           }}
         >
@@ -82,8 +87,8 @@ const Footer = () => {
             variant="contained"
             href="https://onesaz.com/sign-in"
             sx={{
-              backgroundColor: '#87CEEB', // Sky blue color
-              color: '#000', // Black font color
+              backgroundColor: '#87CEEB',
+              color: '#000',
               textTransform: 'none',
               fontSize: '1rem',
               fontWeight: 500,
